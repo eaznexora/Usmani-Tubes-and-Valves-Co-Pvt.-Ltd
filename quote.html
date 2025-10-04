@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usmani Tubes and Valves Co Pvt. Ltd</title>
+  <link rel="icon" href="iconutvc.png" type="image/png">
+  
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    :root{
+      --topbar-bg:#0056A4;
+      --topbar-fg:#fff;
+      --topbar-x:16px;
+      --topbar-y:6px;
+      --topbar-gap:18px;
+      --brand:#0056A4;
+      --accent:#f9b916;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar{
+      background: var(--topbar-bg);
+      color: var(--topbar-fg);
+      font-size:14px;
+      height: 40px;
+    }
+    .top-bar-inner{
+      width:100vw;
+      /*max-width:1399px;*/   /* align top bar with header */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--topbar-y) var(--topbar-x);
+      box-sizing:border-box;
+    }
+    .tb-left{
+      display:flex;
+      align-items:center;
+      gap: var(--topbar-gap);
+      padding-left: 20px;
+      font-weight: 800;
+      font-size: larger;
+      padding-left: 40px;
+    }
+    .tb-left span{ display:inline-flex; align-items:center; white-space:nowrap; }
+    .tb-left i{ margin-right:6px; }
+
+    .tb-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-right: 40px;
+    }
+
+    .tb-right img{
+      width:24px;
+      height:24px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header-main{ background:#fff; }
+    .header-main .container{
+      max-width:1399px;   /* ✅ image width */
+      margin:0 auto;
+      padding:10px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height: 120px;
+    }
+    #brandImg{
+      width:1399px;       /* ✅ fixed width */
+      max-width:100%;
+      display:block;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav-bar{ background: var(--accent); }
+    .nav-bar .container{
+      max-width:1299px;   /* ✅ match image width */
+      margin:0 auto;
+      padding:10px 0;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;  /* first link left, last button right */
+      align-items:center;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-menu a{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+      padding: 6px 2px;
+      position: relative;
+      outline: none;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      height:2px; width:0;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{ width:100%; }
+
+    .nav-menu a.active{ color: var(--brand); }
+
+    .nav-buttons{ display:flex; gap:10px; }
+
+    .nav-bar .nav-buttons a{
+      display:inline-block;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 800 !important;
+      font-size:16px;
+      padding:10px 20px;
+      border-radius:5px;
+      text-decoration:none;
+      transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    .nav-buttons .contact{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid #ddd;
+    }
+    .nav-buttons .contact:hover{
+      background:#fff;
+      color:#003e75;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-buttons .quote{
+      background:var(--brand);
+      color:#fff;
+      border:1px solid var(--brand);
+    }
+    .nav-buttons .quote:hover{
+      background:#004a90;
+      border-color:#004a90;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+      transform: translateY(-1px);
+    }
+
+
+    /* Animations */
+    @keyframes fadeInLeft { from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes fadeInRight{ from{opacity:0;transform:translateX(20px)}  to{opacity:1;transform:translateX(0)} }
+    @keyframes fadeInUp   { from{opacity:0;transform:translateY(20px)}  to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Quote form layout */
+    .quote-container {
+      max-width: 1200px; margin: 60px auto; background: #fff; border-radius: 16px;
+      overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      display: flex; animation: fadeInUp 0.8s ease-out both;
+    }
+    .quote-left {
+      width: 45%; padding: 40px; border-right: 1px solid #eee;
+      animation: fadeInLeft 0.8s ease-out both;
+    }
+    .quote-left h1 { font-size: 28px; margin-bottom: 16px; }
+    .quote-left p { font-size: 16px; margin-bottom: 24px; line-height: 1.5; color: #555; }
+    .quote-left h3 { font-size: 20px; margin-bottom: 12px; }
+    .quote-left ul { list-style: disc inside; color: #555; padding-left: 0; }
+    .quote-left ul li { margin-bottom: 12px; transition: color 0.3s; }
+    .quote-left ul li:hover { color: #0060aa; }
+
+    .quote-right {
+      width: 55%; padding: 40px; display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 32px 40px; animation: fadeInRight 0.8s ease-out both;
+    }
+    .form-group { position: relative; margin-bottom: 32px; animation: fadeInDown 0.6s ease-out both; padding-top: 8px; }
+    .form-group label { position: absolute; top: 0; left: 0; background: #fff; padding: 0 4px; font-size: 14px; color: #666; }
+    .form-group input, .form-group textarea {
+      width: 100%; border: none; border-bottom: 2px solid #ccc; padding: 8px 0; font-size: 15px;
+      transition: border-color 0.3s; outline: none; background: transparent; margin-top: 8px;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: #0060aa; }
+    .form-group textarea { resize: vertical; height: 80px; }
+
+    .form-actions { grid-column: span 2; display: flex; gap: 20px; justify-content: flex-end; margin-top: 16px; animation: fadeInDown 0.6s ease-out both; }
+    .form-actions button {
+      padding: 12px 24px; font-size: 16px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .btn-call { background: #0060aa; color: #fff; }
+    .btn-quote-send { background: #004b82; color: #fff; }
+    .form-actions button:hover { transform: translateY(-2px); }
+
+    .loader {
+      border: 4px solid #f3f3f3; border-top: 4px solid #0060aa; border-radius: 50%; width: 20px; height: 20px;
+      animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; margin-left: 8px;
+    }
+    @keyframes spin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+
+
+    /* Stop 100vw overflow that causes the bottom scrollbar */
+.top-bar-inner { width: 100% !important; }     /* was 100vw */
+.hero-banner   { width: 100% !important; }     /* was 100vw */
+.hero-slide    { flex: 0 0 100% !important; }  /* was 100vw */
+
+/* Safety: never allow horizontal scrolling */
+html, body { overflow-x: hidden; }
+
+    /* FOOTER */
+    footer { background:#0060aa; color:#fff; margin-top:60px; }
+    .footer-top { display:flex; justify-content:space-between; flex-wrap:wrap; padding:40px 60px; }
+    .footer-col { flex:1; min-width:260px; margin:10px 20px; }
+    .footer-logo { height:60px; margin-bottom:10px; }
+    .footer-col h4 { font-size:16px; margin:15px 0 10px; font-weight:bold; }
+    .footer-col p, .footer-col a, .products-grid span { font-size:14px; line-height:1.6; color:#fff; text-decoration:none; }
+    .divider { border-top:1px solid rgba(255,255,255,0.4); margin:15px 0; }
+    .link-grid { display:grid; grid-template-columns: repeat(2, auto); gap:5px 40px; }
+    .subscribe-box { display:flex; margin:15px 0; overflow:hidden; max-width:320px; border-radius:4px; }
+    .subscribe-box input { flex:1; padding:12px; border:none; font-size:14px; color:#333; }
+    .subscribe-box button { background:#fdb913; border:none; padding:0 20px; cursor:pointer; font-size:16px; color:#000; font-weight:bold; transition:background .3s; }
+    .subscribe-box button:hover { background:#e5a900; }
+    .social-icons { display:flex; gap:12px; margin-top:10px; }
+    .social-icons a { width:38px; height:38px; background:#fff; color:#0060aa; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:18px; transition:transform .3s; }
+    .social-icons a:hover { transform:scale(1.15); }
+    .footer-bottom { background:#005299; text-align:center; padding:12px; font-size:13px; }
+    .footer-bottom a { color:#fff; margin:0 8px; text-decoration:none; }
+    .footer-bottom a:hover { text-decoration:underline; }
+    .products-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap:8px 20px; margin-top:10px; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .quote-container { flex-direction: column; }
+      .quote-left { border-right: none; border-bottom: 1px solid #eee; width: 100%; }
+      .quote-right { width: 100%; grid-template-columns: 1fr; }
+      .form-actions { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .top-bar { padding: 8px 16px; }
+      .logo-row { padding: 12px 16px; }
+      nav { padding: 12px 16px; flex-wrap: wrap; }
+      .nav-center { display: none; }
+      .mobile-hamburger { display: inline-block; }
+      .quote-container { margin: 30px 20px; }
+      .quote-left, .quote-right { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="tb-left">
+        <span><i class="fa-solid fa-envelope"></i> info@usmanivalves.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9833868523</span>
+      </div>
+      <div class="tb-right">
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-main">
+    <div class="container">
+      <img src="Header.png" alt="Usmani Header" id="brandImg">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-menu">
+          <a href="index.html">HOME</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="products.html">PRODUCTS</a>
+          <a href="catalogues.html">CATALOGUE</a>
+          <a href="certificates.html">CERTIFICATES</a>
+          <a href="client.html">CLIENTS</a>
+          <a href="blog.html">BLOG</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="contact.html" class="contact">Contact Us</a>
+          <a href="quote.html" class="quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- QUOTE CONTENT -->
+<div class="quote-container">
+  <div class="quote-left">
+    <h1>Request a Quote from Usmani Valves</h1>
+    <p>Tell us about your requirements, and our team will get back with the best solution and pricing.</p>
+    <h3>Why Choose Us</h3>
+    <ul>
+      <li>High-Quality, Certified Valves</li>
+      <li>Customized Solutions for Every Industry</li>
+      <li>Fast Response and Global Delivery</li>
+      <li>Trusted by Leading Companies Worldwide</li>
+    </ul>
+  </div>
+  <form id="quoteForm" class="quote-right" novalidate>
+    <div class="form-group">
+      <label for="companyName">Company Name</label>
+      <input type="text" id="companyName" name="companyName" placeholder="Your company’s registered name" required>
+    </div>
+    <div class="form-group">
+      <label for="yourName">Your Name</label>
+      <input type="text" id="yourName" name="yourName" placeholder="Ameenullah" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="+91 999 888 7770" required>
+    </div>
+    <div class="form-group">
+      <label for="industry">Industry</label>
+      <input type="text" id="industry" name="industry" placeholder="e.g., Oil & Gas" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Additional details (optional)"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="productType">Product Type</label>
+      <input type="text" id="productType" name="productType" placeholder="Ball Valve, Butterfly Valve…" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity Required</label>
+      <input type="number" id="quantity" name="quantity" placeholder="e.g., 100" min="1" required>
+    </div>
+    <div class="form-actions">
+      <button class="btn-call" type="button" onclick="window.location.href='tel:+919833868523'">Request a call</button>
+      <button class="btn-quote-send" type="submit" id="sendQuoteBtn">Send a Quote</button>
+    </div>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col company-info">
+      <img src="usmani-footer-text.jpg" class="footer-logo" alt="Usmani Logo">
+      <div class="divider"></div>
+      <p>
+        Virani Business Centre, B Wing 301,<br>
+        Opp. Bharath Gear Company Above<br>
+        Dawat Banquet Hall and Abhyudaya<br>
+        Bank Kausa Mumbra, Thane – 400612
+      </p>
+      <p><i class="fas fa-envelope"></i> info@usmanivalves.com</p>
+      <p><i class="fas fa-phone"></i> +91 111 222 3330</p>
+    </div>
+    <div class="footer-col links">
+      <h4>Company Links</h4>
+      <div class="link-grid">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="catalogues.html">CATALOGUE</a>
+        <a href="certificates.html">CERTIFICATES</a>
+        <a href="client.html">CLIENTS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="quote.html">Get a Quote</a>
+      </div>
+      <div class="divider"></div>
+      <h4>Products</h4>
+      <div class="products-grid">
+        <span>Ball Valve</span><span>Diaphragm Valve</span><span>Safety Valve</span>
+        <span>Check Valve</span><span>Butterfly Valve</span><span>Plug Valve</span>
+        <span>Control Valve</span><span>Globe Valve</span><span>Flush Valve</span>
+        <span>Disc Check Valve</span><span>Knife Gate</span><span>Basket Strainer Valve</span>
+        <span>Steam Trap</span>
+      </div>
+    </div>
+    <div class="footer-col subscribe">
+      <h4>Stay Connected</h4>
+      <p>Subscribe for the latest valve news, product launches, and catalogues from Usmani Tubes and Valves – trusted valve manufacturers in Mumbai, India.</p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter Your Email Address">
+        <button>→</button>
+      </div>
+      <div class="divider"></div>
+      <h4>Follow Usmani Tubes and Valves on</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Usmani Tubes And Valves Co. Pvt. Ltd. All Rights Reserved
+    <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Certificates</a>
+  </div>
+</footer>
+
+<script>
+// ========== Mobile menu (safe-guarded) ==========
+(function () {
+  var hamburger = document.getElementById('mobileHamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+
+  function checkSmall() {
+    var mq = window.matchMedia('(max-width: 768px)');
+    if (mq.matches) {
+      hamburger.style.display = 'inline-block';
+    } else {
+      hamburger.style.display = 'none';
+      mobileMenu.style.display = 'none';
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+  }
+  checkSmall();
+  window.addEventListener('resize', checkSmall);
+
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = open ? 'none' : 'flex';
+    hamburger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    mobileMenu.setAttribute('aria-hidden', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobileMenu.style.display = 'none';
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+})();
+
+// ========== Quote form with native validation ==========
+(function () {
+  var form = document.getElementById('quoteForm');
+  var sendBtn = document.getElementById('sendQuoteBtn');
+  if (!form || !sendBtn) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Trigger built-in bubbles like "Please fill in this field."
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Passed validation; show loading and proceed
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = 'Submitting<span class="loader"></span>';
+
+    try {
+      // TODO: Replace with your endpoint (Google Apps Script, etc.)
+      // const data = Object.fromEntries(new FormData(form).entries());
+      // const res = await fetch('https://script.google.com/macros/s/DEPLOYMENT_ID/exec', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // });
+      // if (!res.ok) throw new Error('Network error');
+
+      // Demo success state
+      await new Promise(r => setTimeout(r, 800));
+      sendBtn.innerHTML = 'Submitted';
+      form.reset();
+    } catch (err) {
+      alert('Submission failed. Please try again.');
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send a Quote';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

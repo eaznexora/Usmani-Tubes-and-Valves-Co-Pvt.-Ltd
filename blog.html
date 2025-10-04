@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usmani Tubes and Valves Co Pvt. Ltd</title>
+  <link rel="icon" href="iconutvc.png" type="image/png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    :root{
+      --topbar-bg:#0056A4;
+      --topbar-fg:#fff;
+      --topbar-x:16px;
+      --topbar-y:6px;
+      --topbar-gap:18px;
+      --brand:#0056A4;
+      --accent:#f9b916;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar{
+      background: var(--topbar-bg);
+      color: var(--topbar-fg);
+      font-size:14px;
+      height: 40px;
+    }
+    .top-bar-inner{
+      width:100vw;
+      /*max-width:1399px;*/   /* align top bar with header */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--topbar-y) var(--topbar-x);
+      box-sizing:border-box;
+    }
+    .tb-left{
+      display:flex;
+      align-items:center;
+      gap: var(--topbar-gap);
+      padding-left: 20px;
+      font-weight: 800;
+      font-size: larger;
+      padding-left: 40px;
+    }
+    .tb-left span{ display:inline-flex; align-items:center; white-space:nowrap; }
+    .tb-left i{ margin-right:6px; }
+
+    .tb-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-right: 40px;
+    }
+
+    .tb-right img{
+      width:24px;
+      height:24px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header-main{ background:#fff; }
+    .header-main .container{
+      max-width:1399px;   /* ✅ image width */
+      margin:0 auto;
+      padding:10px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height: 120px;
+    }
+    #brandImg{
+      width:1399px;       /* ✅ fixed width */
+      max-width:100%;
+      display:block;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav-bar{ background: var(--accent); }
+    .nav-bar .container{
+      max-width:1299px;   /* ✅ match image width */
+      margin:0 auto;
+      padding:10px 0;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;  /* first link left, last button right */
+      align-items:center;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-menu a{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+      padding: 6px 2px;
+      position: relative;
+      outline: none;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      height:2px; width:0;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{ width:100%; }
+
+    .nav-menu a.active{ color: var(--brand); }
+
+    .nav-buttons{ display:flex; gap:10px; }
+
+    .nav-bar .nav-buttons a{
+      display:inline-block;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 800 !important;
+      font-size:16px;
+      padding:10px 20px;
+      border-radius:5px;
+      text-decoration:none;
+      transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    .nav-buttons .contact{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid #ddd;
+    }
+    .nav-buttons .contact:hover{
+      background:#fff;
+      color:#003e75;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-buttons .quote{
+      background:var(--brand);
+      color:#fff;
+      border:1px solid var(--brand);
+    }
+    .nav-buttons .quote:hover{
+      background:#004a90;
+      border-color:#004a90;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+      transform: translateY(-1px);
+    }
+
+    .blog-header {
+      max-width: 800px;
+      margin: 60px auto 40px auto;
+      text-align: center;
+      color: #666;
+      font-family: Arial, sans-serif;
+    }
+    .blog-header h1 {
+      font-weight: 900;
+      font-size: 26px;
+      color: #555;
+      margin-bottom: 6px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .blog-header p {
+      font-weight: 400;
+      font-size: 14px;
+      color: #888;
+      margin-top: 0;
+      margin-bottom: 26px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s;
+    }
+    .blog-header.visible h1,
+    .blog-header.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blog-header hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 0 auto;
+      width: 80px;
+      transition: width 0.5s ease;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s, width 0.5s ease 0.6s;
+    }
+    .blog-header.visible hr {
+      opacity: 1;
+      transform: scaleX(1);
+      width: 120px;
+    }
+
+    .fadeInUp {
+      opacity: 0;
+      transform: translateY(40px);
+      animation-fill-mode: forwards;
+      animation-duration: 1.2s;
+      animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+      will-change: transform, opacity;
+    }
+    .fadeInUp.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .blog-container {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .blog-post {
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .blog-post:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .blog-image {
+      flex: 1 1 400px;
+      min-height: 280px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+      background: #ccc;
+    }
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .blog-image:hover {
+      box-shadow: 0 12px 30px rgba(0, 96, 170, 0.7);
+      transform: scale(1.07);
+    }
+    .blog-image:hover img {
+      transform: scale(1.12);
+    }
+
+    .blog-text {
+      flex: 1 1 500px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.645, 0.045, 0.355, 1), transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .blog-text.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blog-text h2 {
+      font-size: 22px;
+      color: #555;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
+    .blog-text p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #444;
+    }
+    .blog-text h2:hover {
+      color: #0060aa;
+      cursor: default;
+    }
+
+    @media (max-width: 992px) {
+      .blog-post {
+        flex-direction: column !important;
+      }
+      .blog-image, .blog-text {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Stop 100vw overflow that causes the bottom scrollbar */
+.top-bar-inner { width: 100% !important; }     /* was 100vw */
+.hero-banner   { width: 100% !important; }     /* was 100vw */
+.hero-slide    { flex: 0 0 100% !important; }  /* was 100vw */
+
+/* Safety: never allow horizontal scrolling */
+html, body { overflow-x: hidden; }
+
+     footer { background:#0060aa; color:#fff; margin-top:60px; }
+.footer-top { display:flex; justify-content:space-between; flex-wrap:wrap; padding:40px 60px; }
+.footer-col { flex:1; min-width:260px; margin:10px 20px; }
+.footer-logo { height:60px; margin-bottom:10px; }
+.footer-col h4 { font-size:16px; margin:15px 0 10px; font-weight:bold; }
+.footer-col p, .footer-col a, .products-grid span { font-size:14px; line-height:1.6; color:#fff; text-decoration:none; }
+.divider { border-top:1px solid rgba(255,255,255,0.4); margin:15px 0; }
+.link-grid { display:grid; grid-template-columns: repeat(2, auto); gap:5px 40px; }
+.subscribe-box { display:flex; margin:15px 0; border-radius:4px; overflow:hidden; max-width:320px; }
+.subscribe-box input { flex:1; padding:12px; border:none; font-size:14px; color:#333; }
+.subscribe-box button { background:#fdb913; border:none; padding:0 20px; cursor:pointer; font-size:16px; color:#000; font-weight:bold; transition:all 0.3s; }
+.subscribe-box button:hover { background:#e5a900; }
+.social-icons { display:flex; gap:12px; margin-top:10px; }
+.social-icons a { display:flex; align-items:center; justify-content:center; width:38px; height:38px; background:#fff; color:#0060aa; border-radius:6px; font-size:18px; transition:transform 0.3s; }
+.social-icons a:hover { transform:scale(1.15); }
+.cert-logos img { height:70px; margin:10px 15px 0 0; }
+.footer-bottom { background:#005299; text-align:center; padding:12px; font-size:13px; }
+.footer-bottom a { color:#fff; margin:0 8px; text-decoration:none; }
+.footer-bottom a:hover { text-decoration:underline; }
+.products-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px 20px; margin-top:10px; }
+.products-grid div, .products-grid span { font-size:14px; line-height:1.6; color:#fff; }
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: center; padding: 30px 20px; }
+  .footer-col { text-align: center; margin: 12px 0; max-width: 520px; min-width: auto; width: 100%; }
+}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .top-bar { padding: 8px 16px; }
+      .top-bar .left span { display: none; }
+      .top-bar .left i { font-size: 18px; }
+
+      .logo-text { flex-direction: column; align-items: center; gap: 6px; }
+      .brand { display: none; }
+      .logo-right { align-items: center; text-align:center; }
+
+      nav { padding: 12px 16px; }
+      .nav-center { order: 1; width: 100%; display:none; }
+      .nav-buttons { order: 2; }
+      .mobile-hamburger { order: 3; display:inline-block; margin-left: 8px; }
+      .mobile-menu { display:none; order: 4; }
+
+      .mobile-menu a { padding: 12px 8px; }
+
+      .about-block h2 { font-size: 26px; }
+      .about-block p { font-size: 15px; }
+      .stat-number { font-size: 36px; }
+      .timeline-title { font-size: 26px; }
+      
+
+    }
+
+    @media (max-width: 420px) {
+      .logo-with-text img { height: 52px; }
+      .logo-right .subbrand { font-size: 16px; }
+      .logo-right .tag { font-size: 12px; }
+      .top-bar .right i { margin-left: 8px; }
+      .about-section { margin: 30px auto; }
+    }
+  </style>
+</head>
+<body>
+
+   <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="tb-left">
+        <span><i class="fa-solid fa-envelope"></i> info@usmanivalves.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9833868523</span>
+      </div>
+      <div class="tb-right">
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-main">
+    <div class="container">
+      <img src="Header.png" alt="Usmani Header" id="brandImg">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-menu">
+          <a href="index.html">HOME</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="products.html">PRODUCTS</a>
+          <a href="catalogues.html">CATALOGUE</a>
+          <a href="certificates.html">CERTIFICATES</a>
+          <a href="client.html">CLIENTS</a>
+          <a href="blog.html" class="active">BLOG</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="contact.html" class="contact">Contact Us</a>
+          <a href="quote.html" class="quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Blog page header -->
+  <div class="blog-header">
+    <h1>Insights & Innovations in Industrial Valves</h1>
+    <p>A leading industrial valve manufacturer in Mumbai, India, delivering trusted solutions since 2001.</p>
+    <hr />
+  </div>
+
+  <div class="blog-container">
+
+    <!-- Section 1 -->
+    <section class="blog-post fadeInUp" style="animation-delay: 0s;">
+      <div class="blog-image" tabindex="0" aria-label="Insight & Innovation image placeholder">
+        <img src="intro1.jpg" alt="Insights & Innovations in Industrial Valves"/>
+      </div>
+      <div class="blog-text">
+        <h2>Reliable Flow Control for the Oil & Gas Industry</h2>
+        <p>
+          The Oil & Gas industry needs valves that work safely under extreme pressure and temperature. Usmani Valves offers durable Gate Valves, Ball Valves, and Control Valves designed for offshore and onshore challenges.
+          Made from corrosion-resistant alloys, our valves ensure leak-proof performance and long service life. With advanced safety features like emergency shut-off, Usmani Valves helps refineries and pipelines prevent accidents and protect the environment. Trusted globally, our solutions deliver the perfect balance of safety, strength, and efficiency.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="blog-post fadeInUp" style="animation-delay: 0.3s;">
+      <div class="blog-image" tabindex="0" aria-label="Chemical Applications image placeholder">
+        <img src="intro2.jpeg" alt="Engineered Valve Solutions for Petrochemical & Chemical" />
+      </div>
+      <div class="blog-text">
+        <h2>Engineered Valve Solutions for Petrochemical & Chemical Applications</h2>
+        <p>
+          In the chemical industry, even small leaks can cause big risks. Usmani Valves provides chemical-resistant Butterfly Valves, Diaphragm Valves, and Lined Valves for safe and reliable flow control.
+          Built with PTFE linings and high-grade materials, our valves resist corrosion from acids, alkalis, and solvents. Precision engineering ensures smooth operations, reduces downtime, and supports compliance with safety standards.
+          From production lines to storage plants, Usmani Valves delivers reliable, leak-proof, and efficient solutions that keep chemical processes safe.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="blog-post fadeInUp" style="animation-delay: 0.6s;">
+      <div class="blog-image" tabindex="0" aria-label="Pharmaceutical Industry image placeholder">
+        <img src="intro3.jpg" alt="Hygienic Valve Solutions for Pharmaceutical Industry" />
+      </div>
+      <div class="blog-text">
+        <h2>Hygienic and Precise Valve Solutions for the Pharmaceutical Industry</h2>
+        <p>
+          Pharmaceutical manufacturing demands hygienic and contamination-free processes. Usmani Valves designs sanitary Diaphragm Valves, Butterfly Valves, and Stainless-Steel Valves that meet FDA and GMP standards.
+          With smooth, polished surfaces and CIP/SIP compatibility, our valves are easy to clean and maintain.
+          They provide accurate flow control, ensuring consistency in drug formulations and patient safety. By combining reliability with global compliance, Usmani Valves is the trusted partner for pharma companies seeking clean, safe, and precise valve solutions.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-col company-info">
+      <img src="utvc-footer-logo-2.jpeg.png" alt="Usmani Logo" class="footer-logo" />
+      <div class="divider"></div>
+      <p>
+        Virani Business Centre, B Wing 301,<br />
+        Opp. Bharath Gear Company Above<br />
+        Dawat Banquet Hall and Abhyudaya<br />
+        Bank Kausa Mumbra, Thane - 400612,
+      </p>
+      <p><i class="fas fa-envelope"></i> info@usmanivalves.com</p>
+      <p><i class="fas fa-phone"></i> +91 111 222 3330</p>
+      <div class="cert-logos">
+        <!-- <img src="usmani-header-certificates-logo.jpg" alt="CE" /> -->
+      </div>
+    </div>
+
+    <div class="footer-col links">
+      <h4>Company Links</h4>
+      <div class="link-grid">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="catalogues.html">CATALOGUE</a>
+        <a href="certificates.html">CERTIFICATES</a>
+        <a href="client.html">CLIENTS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="quote.html">Get a Quote</a>
+      </div>
+      <div class="divider"></div>
+      <h4>Products</h4>
+      <div class="products-grid">
+        <span>Ball Valve</span>
+        <span>Diaphragm Valve</span>
+        <span>Safety Valve</span>
+        <span>Check Valve</span>
+        <span>Butterfly Valve</span>
+        <span>Plug Valve</span>
+        <span>Control Valve</span>
+        <span>Globe Valve</span>
+        <span>Flush Valve</span>
+        <span>Disc Check Valve</span>
+        <span>Knife Gate</span>
+        <span>Basket Strainer Valve</span>
+        <span>Steam Trap</span>
+      </div>
+    </div>
+
+    <div class="footer-col subscribe">
+      <h4>Stay Connected</h4>
+      <p>
+        Subscribe for the latest valve news, product launches, and catalogues from
+        Usmani Tubes and Valves – trusted valve manufacturers in Mumbai, India.
+      </p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter Your Email Address" />
+        <button>→</button>
+      </div>
+      <div class="divider"></div>
+      <h4>Follow Usmani Tubes and Valves on</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Usmani Tubes And Valves Co. Pvt. Ltd. All Rights Reserved
+    <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Certificates</a>
+  </div>
+</footer>
+
+  <script>
+    // Animate blog header text on load
+    window.addEventListener('load', () => {
+      document.querySelector('.blog-header').classList.add('visible');
+      animateOnScroll();
+    });
+
+    // Smooth fade in sections on scroll
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+        rect.bottom >= 0
+      );
+    }
+
+    function animateOnScroll() {
+      const imageElements = document.querySelectorAll('.fadeInUp');
+      imageElements.forEach(el => {
+        if (isInViewport(el)) {
+          el.classList.add('animate');
+        }
+      });
+      const textElements = document.querySelectorAll('.blog-text');
+      textElements.forEach(el => {
+        if (isInViewport(el)) {
+          el.classList.add('animate');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usmani Tubes and Valves Co Pvt. Ltd</title>
+  <link rel="icon" href="iconutvc.png" type="image/png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --topbar-bg:#0056A4;
+      --topbar-fg:#fff;
+      --topbar-x:16px;
+      --topbar-y:6px;
+      --topbar-gap:18px;
+      --brand:#0056A4;
+      --accent:#f9b916;
+    }
+
+    body{
+      margin:0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar{
+      background: var(--topbar-bg);
+      color: var(--topbar-fg);
+      font-size:14px;
+      height: 40px;
+    }
+    .top-bar-inner{
+      width:100vw;
+      /*max-width:1399px;*/   /* align top bar with header */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--topbar-y) var(--topbar-x);
+      box-sizing:border-box;
+    }
+    .tb-left{
+      display:flex;
+      align-items:center;
+      gap: var(--topbar-gap);
+      padding-left: 20px;
+      font-weight: 800;
+      font-size: larger;
+      padding-left: 40px;
+    }
+    .tb-left span{ display:inline-flex; align-items:center; white-space:nowrap; }
+    .tb-left i{ margin-right:6px; }
+
+    .tb-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-right: 40px;
+    }
+
+    .tb-right img{
+      width:24px;
+      height:24px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header-main{ background:#fff; }
+    .header-main .container{
+      max-width:1399px;   /* ✅ image width */
+      margin:0 auto;
+      padding:10px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height: 120px;
+    }
+    #brandImg{
+      width:1399px;       /* ✅ fixed width */
+      max-width:100%;
+      display:block;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav-bar{ background: var(--accent); }
+    .nav-bar .container{
+      max-width:1299px;   /* ✅ match image width */
+      margin:0 auto;
+      padding:10px 0;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;  /* first link left, last button right */
+      align-items:center;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-menu a{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+      padding: 6px 2px;
+      position: relative;
+      outline: none;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      height:2px; width:0;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{ width:100%; }
+
+    .nav-menu a.active{ color: var(--brand); }
+
+    .nav-buttons{ display:flex; gap:10px; }
+
+    .nav-bar .nav-buttons a{
+      display:inline-block;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 800 !important;
+      font-size:16px;
+      padding:10px 20px;
+      border-radius:5px;
+      text-decoration:none;
+      transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    .nav-buttons .contact{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid #ddd;
+    }
+    .nav-buttons .contact:hover{
+      background:#fff;
+      color:#003e75;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-buttons .quote{
+      background:var(--brand);
+      color:#fff;
+      border:1px solid var(--brand);
+    }
+    .nav-buttons .quote:hover{
+      background:#004a90;
+      border-color:#004a90;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+      transform: translateY(-1px);
+    }
+
+/* ---- FULL WIDTH HERO BANNER ---- */
+.hero-banner {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  height: 500px;
+  background: #111;
+}
+
+.hero-track {
+  display: flex;
+  transition: transform .6s ease;
+  will-change: transform;
+}
+
+.hero-slide {
+  flex: 0 0 100vw;
+  height: 500px;
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  background: #e0e0e0; /* placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+/* Buttons */
+.hero-cta {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  gap: 16px;
+}
+.btn {
+  padding: 14px 26px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-orange {
+  background: #e74a1a;
+  color: #fff;
+  border-color: #e74a1a;
+}
+.btn-orange:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(231,74,26,.35);
+}
+.btn-blue {
+  background: #1869bf;
+  color: #fff;
+  border-color: #1869bf;
+}
+.btn-blue:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(24,105,191,.35);
+}
+
+/* Arrows */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+.hero-arrow:hover {
+  background: rgba(0,0,0,.65);
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Dots */
+.hero-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.hero-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background .3s;
+}
+.hero-dots button.active {
+  background: #fff;
+}
+
+
+    /* ---- EXACT EDGE WRAPPER (matches header image & nav) ---- */
+.align-1399 {
+  width: 1399px;
+  max-width: 1399px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;   /* no side padding */
+  padding-right: 0;  /* no side padding */
+}
+
+/* Company intro (grey) */
+.company-intro {
+  background: #f5f5f5;
+}
+.company-intro .align-1399 {
+  padding-top: 32px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+.company-intro h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  color: #333;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+/* make the intro and industry text align exactly with the 1399px container */
+.company-intro p,
+.industries p {
+  max-width: 100%;    /* full width inside 1399 container */
+  margin: 0;          /* no auto centering */
+  text-align: left;   /* left aligned */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* Divider perfectly aligned to 1399 edges */
+.section-divider {
+  width: 1399px;
+  max-width: 1399px;
+  margin: 18px auto 0;
+  border: 0;
+  border-top: 1px solid #e6e6e6;
+}
+
+/* Industries (white) */
+.industries {
+  background: #fff;
+}
+.industries .align-1399 {
+  padding-top: 32px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+.industries h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #333;
+  margin: 0 0 16px;
+}
+
+/* 3-up cards */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card {
+  text-align: left;
+}
+
+.img-placeholder {
+  background: #e0e0e0;
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.card h3 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #333;
+  margin: 12px 0 8px;
+}
+.card p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ===== exact-width container to match your layout ===== */
+.tv2-edge{ width:1399px; max-width:1399px; margin:0 auto; }
+
+/* section bg + divider line exactly like your reference */
+.tv2-wrap{ background:#f3f3f3; padding:0 0 36px; }
+.tv2-divider{
+  width:1399px; max-width:1399px; margin:24px auto 14px;
+  border:0; border-top:1px solid #e5e5e5;
+}
+
+/* title */
+.tv2-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:32px;          /* bold like screenshot */
+  line-height:1.18;
+  color:#3a3a3a;
+  text-align:center;
+  margin:12px 0 22px;
+}
+
+/* grid with generous gutters to mimic spacing in the image */
+.tv2-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:44px;                 /* big gaps like screenshot */
+  padding:0 56px;           /* pulls cards in from hard edges */
+}
+
+/* card: soft radius + subtle shadow + thin border */
+.tv2-card{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  border:1px solid #e7e7e7;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  width: 300px;
+  height: 520px;
+}
+
+/* image area — centered, ample space like sample */
+.tv2-imgph{
+  width:100%;
+  height:240px;             /* visual balance */
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  color:#666; font: 14px/1 'Roboto',sans-serif;
+  margin-bottom:16px;
+  object-fit:contain;
+}
+
+/* heading inside card */
+.tv2-card-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:26px;           /* matches sample */
+  color:#0f0f0f;
+  margin:6px 0 12px;
+}
+
+/* specs list — compact grey, left aligned */
+.tv2-specs{
+  list-style:none; padding:0; margin:0 0 16px 0;
+  font-family:'Roboto',sans-serif;
+  font-size:14px; line-height:1.65; color:#565656;
+}
+.tv2-specs li{ margin:2px 0; }
+.tv2-specs strong{ color:#2a2a2a; }
+
+/* pill button */
+.tv2-btn{
+  display:inline-block;
+  align-self:flex-start;
+  background:#1967c2;       /* blue tone from your UI */
+  color:#fff; text-decoration:none;
+  font-family:'Poppins',sans-serif;
+  font-weight:700; font-size:16px;
+  padding:12px 22px;
+  border-radius:14px;       /* pill-ish */
+  box-shadow:0 6px 16px rgba(25,103,194,.20);
+  transition:transform .15s, box-shadow .15s;
+}
+.tv2-btn:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(25,103,194,.28); }
+
+/* View all link centered below */
+.tv2-viewall{
+  text-align:center; margin:26px 0 0;
+  font-family:'Poppins',sans-serif; font-size:20px;
+}
+.tv2-viewall a{ color:#1967c2; text-decoration:none; font-weight:600; }
+.tv2-viewall a:hover{ text-decoration:underline; }
+
+/* responsive safety so cards stack nicely if needed */
+@media (max-width: 1200px){
+  .tv2-edge{ width:100%; max-width:100%; }
+  .tv2-grid{ grid-template-columns:1fr; gap:28px; padding:0 24px; }
+  .tv2-card-title{ font-size:24px; }
+}
+
+/* ===== Our Core Product Lines (exact like screenshot) ===== */
+.cpl-edge{
+  width:1399px;
+  max-width:1399px;
+  margin:0 auto;
+  padding:40px 0;
+}
+
+/* Header row with Ball Valves left, Title center, View All right */
+/* --- Single-line header row: left | center | right --- */
+.cpl-header{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;          /* keep all on the same row & vertically centered */
+  gap:16px;
+  padding:0 56px;              /* matches card inset so edges line up */
+  margin-bottom:32px;
+}
+
+/* Prevent any wrapping that was pushing the title down */
+.cpl-left,
+.cpl-title,
+.cpl-viewall { white-space: nowrap; }
+
+/* Explicit placement/alignment */
+.cpl-left   { justify-self:start;  }
+.cpl-title  { justify-self:center; margin:0; text-align:center; }
+.cpl-viewall{ justify-self:end;    text-decoration:none; }
+
+/* (Optional) nudge line-heights so baselines feel even */
+.cpl-left,
+.cpl-viewall { line-height:1.2; }
+.cpl-title    { line-height:1.15; }
+
+/* Responsive fallback: stack when really narrow */
+@media (max-width: 1200px){
+  .cpl-header{
+    grid-template-columns: 1fr;
+    row-gap:8px;
+    text-align:center;
+  }
+  .cpl-left, .cpl-viewall{ justify-self:center; }
+}
+
+
+.cpl-title{
+  font-family:'Poppins',sans-serif;
+  font-weight:800;
+  font-size:32px;
+  color:#333;
+  text-align:center;
+  margin:0;
+}
+.cpl-viewall{
+  font-family:'Poppins',sans-serif;
+  font-weight:500;
+  font-size:20px;
+  color:#1869bf;
+  text-decoration:none;
+  justify-self:end;
+}
+.cpl-viewall:hover{ text-decoration:underline; }
+
+/* Cards */
+.cpl-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:44px;
+  padding:0 56px;
+  margin-bottom:24px;
+}
+
+.cpl-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.cpl-imgph{
+  width:100%;
+  height:240px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#666;
+  font:14px/1 'Roboto',sans-serif;
+  object-fit:contain;
+}
+
+/* Description */
+.cpl-desc{
+  font-family:'Roboto',sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+  text-align:center;
+  max-width:100%;
+  padding:0 56px;
+  margin:0;
+}
+
+/* Responsive */
+@media(max-width:1200px){
+  .cpl-edge{ width:100%; max-width:100%; }
+  .cpl-header{grid-template-columns:1fr; text-align:center;}
+  .cpl-left, .cpl-viewall{justify-self:center;}
+  .cpl-grid{grid-template-columns:1fr; padding:0 24px;}
+  .cpl-desc{padding:0 24px;}
+}
+
+/* ===== QUALITY SECTION FINAL FIX (titles centered, text left, button centered) ===== */
+
+/* ===== QUALITY SECTION FINAL with vertical divider ===== */
+
+.qr-wrap {
+  background: #f7f7f7;
+  padding: 40px 0;
+}
+
+.qr-edge {
+  width: 1399px;
+  max-width: 1399px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  position: relative;
+}
+
+.qr-col {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.qr-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 14px;
+  text-align: center;    /* ✅ Center title */
+  width: 100%;
+}
+
+.qr-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 18px;
+  text-align: left;      /* ✅ Left align paragraph */
+  width: 100%;
+}
+
+.qr-btn {
+  display: inline-block;
+  align-self: center;    /* ✅ Center button */
+  background: #1869bf;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: background .2s, transform .2s;
+  margin-top: 12px;
+}
+.qr-btn:hover {
+  background: #155ba6;
+  transform: translateY(-1px);
+}
+
+/* ✅ Vertical divider between the two columns */
+.qr-divider {
+  width: 1px;
+  background: #d9d9d9;
+  flex-shrink: 0;
+}
+
+/* === FIX: make the vertical divider visible & full height === */
+.qr-edge{
+  align-items: stretch !important;     /* children match the tallest column */
+}
+
+.qr-divider{
+  width: 1px !important;
+  background: #d9d9d9 !important;      /* subtle grey line */
+  align-self: stretch !important;       /* force full-height within the row */
+  /* optional: add a little vertical breathing if you like */
+  /* margin: 4px 0; */
+}
+
+
+/* Responsive */
+@media (max-width:1200px) {
+  .qr-edge {
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .qr-divider { display: none; }
+}
+
+
+/* Stop 100vw overflow that causes the bottom scrollbar */
+.top-bar-inner { width: 100% !important; }     /* was 100vw */
+.hero-banner   { width: 100% !important; }     /* was 100vw */
+.hero-slide    { flex: 0 0 100% !important; }  /* was 100vw */
+
+/* Safety: never allow horizontal scrolling */
+html, body { overflow-x: hidden; }
+
+/* Optional: make sure images don't create overflow gaps */
+.hero-img img { display:block; width:100%; height:100%; object-fit:cover; }
+
+    footer { background:#0060aa; color:#fff; margin-top:60px; }
+.footer-top { display:flex; justify-content:space-between; flex-wrap:wrap; padding:40px 60px; }
+.footer-col { flex:1; min-width:260px; margin:10px 20px; }
+.footer-logo { height:60px; margin-bottom:10px; }
+.footer-col h4 { font-size:16px; margin:15px 0 10px; font-weight:bold; }
+.footer-col p, .footer-col a, .products-grid span { font-size:14px; line-height:1.6; color:#fff; text-decoration:none; }
+.divider { border-top:1px solid rgba(255,255,255,0.4); margin:15px 0; }
+.link-grid { display:grid; grid-template-columns: repeat(2, auto); gap:5px 40px; }
+.subscribe-box { display:flex; margin:15px 0; border-radius:4px; overflow:hidden; max-width:320px; }
+.subscribe-box input { flex:1; padding:12px; border:none; font-size:14px; color:#333; }
+.subscribe-box button { background:#fdb913; border:none; padding:0 20px; cursor:pointer; font-size:16px; color:#000; font-weight:bold; transition:all 0.3s; }
+.subscribe-box button:hover { background:#e5a900; }
+.social-icons { display:flex; gap:12px; margin-top:10px; }
+.social-icons a { display:flex; align-items:center; justify-content:center; width:38px; height:38px; background:#fff; color:#0060aa; border-radius:6px; font-size:18px; transition:transform 0.3s; }
+.social-icons a:hover { transform:scale(1.15); }
+.cert-logos img { height:70px; margin:10px 15px 0 0; }
+.footer-bottom { background:#005299; text-align:center; padding:12px; font-size:13px; }
+.footer-bottom a { color:#fff; margin:0 8px; text-decoration:none; }
+.footer-bottom a:hover { text-decoration:underline; }
+.products-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px 20px; margin-top:10px; }
+.products-grid div, .products-grid span { font-size:14px; line-height:1.6; color:#fff; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: center; padding: 30px 20px; }
+  .footer-col { text-align: center; margin: 12px 0; max-width: 520px; min-width: auto; width: 100%; }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="tb-left">
+        <span><i class="fa-solid fa-envelope"></i> info@usmanivalves.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9833868523</span>
+      </div>
+      <div class="tb-right">
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-main">
+    <div class="container">
+      <img src="Header.png" alt="Usmani Header" id="brandImg">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-menu">
+          <a href="index.html" class="active">HOME</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="products.html">PRODUCTS</a>
+          <a href="catalogues.html">CATALOGUE</a>
+          <a href="certificates.html">CERTIFICATES</a>
+          <a href="client.html">CLIENTS</a>
+          <a href="blog.html">BLOG</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="contact.html" class="contact">Contact Us</a>
+          <a href="quote.html" class="quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- ===== FULL WIDTH HERO BANNER ===== -->
+<section class="hero-banner">
+  <div class="hero-track" id="heroTrack">
+    <!-- Slide 1 -->
+    <div class="hero-slide">
+      <div class="hero-img">
+        <img src="banner1.jpg" alt="Banner 1" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="hero-cta">
+        <a href="catalogues.html" class="btn btn-orange">VIEW CATALOGUE</a>
+        <a href="quote.html" class="btn btn-blue">REQUEST A QUOTE</a>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+     <div class="hero-img">
+        <img src="banner2.jpg" alt="Banner 2" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="hero-cta">
+        <a href="catalogues.html" class="btn btn-orange">VIEW CATALOGUE</a>
+        <a href="quote.html" class="btn btn-blue">REQUEST A QUOTE</a>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+      <div class="hero-img">
+        <img src="banner1.jpg" alt="Banner 3" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="hero-cta">
+        <a href="catalogues.html" class="btn btn-orange">VIEW CATALOGUE</a>
+        <a href="quote.html" class="btn btn-blue">REQUEST A QUOTE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="hero-arrow prev" id="heroPrev"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="hero-arrow next" id="heroNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+  <!-- Dots -->
+  <div class="hero-dots" id="heroDots"></div>
+</section>
+
+
+<!-- ===== COMPANY INTRO (exact 1399px alignment) ===== -->
+<section class="company-intro">
+  <div class="align-1399">
+    <h2>Trusted Valve Manufacturer, Exporter &amp; Supplier in Mumbai, India</h2>
+    <p>
+      Usmani Valves is a certified manufacturer and exporter of high-quality industrial valves in Mumbai, India.
+      Our product range includes Gate Valves, Ball Valves, Butterfly Valves, and more, engineered to meet international
+      standards. With <strong>ISO 9001:2015 certification, CE approval,</strong> and <strong>IBR compliance,</strong>
+      we ensure durability, safety, and reliable performance for industries worldwide.
+    </p>
+  </div>
+  <hr class="section-divider">
+</section>
+
+<!-- ===== INDUSTRIES (exact 1399px alignment) ===== -->
+<section class="industries">
+  <div class="align-1399">
+    <h2>The Trusted Valve Partner for the World's Most Demanding Industries</h2>
+    <br>
+    <p class="lead">
+      From oil and gas to power generation, Usmani Valves deliver uncompromising quality and performance.
+      Our solutions are engineered to meet the highest international standards for safety and reliability.
+    </p>
+
+    <div class="industry-grid">
+      <!-- Card 1 -->
+      <div class="card">
+          <div class="img-placeholder">
+          <img src="intro1.jpg" alt="intro1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h3>Oil &amp; Gas</h3>
+        <p>
+          From oil and gas to power generation, Usmani Valves deliver uncompromising quality and performance.
+          Our solutions are engineered to meet the highest international standards for safety and reliability.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+          <div class="img-placeholder">
+          <img src="intro2.jpeg" alt="intro2" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h3>Petrochemicals &amp; Chemicals</h3>
+        <p>
+          From oil and gas to power generation, Usmani Valves deliver uncompromising quality and performance.
+          Our solutions are engineered to meet the highest international standards for safety and reliability.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="img-placeholder">
+          <img src="intro3.jpg" alt="intro3" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <h3>Pharmaceutical Industry</h3>
+        <p>
+          From oil and gas to power generation, Usmani Valves deliver uncompromising quality and performance.
+          Our solutions are engineered to meet the highest international standards for safety and reliability.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Trusted Valves for Every Industry (exact look) ===== -->
+<section class="tv2-wrap">
+  <hr class="tv2-divider">
+
+  <div class="tv2-edge">
+    <br>
+    <h2 class="tv2-title">Trusted Valves for Every Industry</h2>
+    <br>
+
+    <div class="tv2-grid">
+      <!-- Card 1 -->
+      <article class="tv2-card">
+        <img class="tv2-imgph" src="pro1.jpg" alt="Gate Valve">
+        <h3 class="tv2-card-title">Gate Valve</h3> 
+        <ul class="tv2-specs">
+          <li><strong>Size Range:</strong> ½″ to 12″</li>
+          <li><strong>Pressure Rating:</strong> PN16 / 150 Class</li>
+          <li><strong>Material:</strong> Carbon Steel / SS 304 / SS 316</li>
+          <li><strong>Temperature:</strong> −20ºC to 200ºC</li>
+          <li><strong>Certification:</strong> ISO 9001, CE Approved</li>
+        </ul>
+        <a href="quote.html" class="tv2-btn">Get Quote</a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="tv2-card">
+        <img class="tv2-imgph" src="pro2.jpg" alt="Gate Valve">
+        <h3 class="tv2-card-title">Globe Valve</h3>
+        <ul class="tv2-specs">
+          <li><strong>Size Range:</strong> ½″ to 12″</li>
+          <li><strong>Pressure Rating:</strong> PN16 / 150 Class</li>
+          <li><strong>Material:</strong> Carbon Steel / SS 304 / SS 316</li>
+          <li><strong>Temperature:</strong> −20ºC to 200ºC</li>
+          <li><strong>Certification:</strong> ISO 9001, CE Approved</li>
+        </ul>
+        <a href="quote.html" class="tv2-btn">Get Quote</a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="tv2-card">
+        <img class="tv2-imgph" src="pro3.jpg" alt="Gate Valve">
+        <h3 class="tv2-card-title">Check Valve</h3>
+        <ul class="tv2-specs">
+          <li><strong>Size Range:</strong> ½″ to 12″</li>
+          <li><strong>Pressure Rating:</strong> PN16 / 150 Class</li>
+          <li><strong>Material:</strong> Carbon Steel / SS 304 / SS 316</li>
+          <li><strong>Temperature:</strong> −20ºC to 200ºC</li>
+          <li><strong>Certification:</strong> ISO 9001, CE Approved</li>
+        </ul>
+        <a href="quote.html" class="tv2-btn">Get Quote</a>
+      </article>
+    </div>
+
+    <p class="tv2-viewall"><a href="products.html">View All Products→</a></p>
+  </div>
+</section>
+<br>
+
+<!-- ===== Our Core Product Lines ===== -->
+<section class="cpl-wrap">
+  <div class="cpl-edge">
+
+   <div class="cpl-header">
+     <span class="cpl-left">Ball Valves</span>
+     <h2 class="cpl-title">Our Core Product Lines</h2>
+     <a href="products.html" class="cpl-viewall">View All →</a>
+   </div>
+
+
+    <div class="cpl-grid">
+      <!-- Card 1 -->
+      <div class="cpl-card">
+       <img class="cpl-imgph" src="cor1.jpeg" alt="Ball Valve">
+      </div>
+      <!-- Card 2 -->
+      <div class="cpl-card">
+       <img class="cpl-imgph" src="cor2.jpeg" alt="Ball Valve"> 
+      </div>
+      <!-- Card 3 -->
+      <div class="cpl-card">
+       <img class="cpl-imgph" src="cor3.jpeg" alt="Ball Valve">
+      </div>
+    </div>
+
+    <p class="cpl-desc">
+      Known for their durability and excellent performance, our ball valves provide tight, reliable sealing with a
+      simple quarter-turn operation. Ideal for controlling the flow of various liquids and gases, they are engineered
+      for minimal pressure drop and long service life in demanding industrial applications.
+    </p>
+  </div>
+</section>
+
+<!-- ===== Quality & Reliability / Quality Policy ===== -->
+<section class="qr-wrap">
+  <div class="qr-edge">
+    <!-- Left -->
+    <div class="qr-col">
+      <h3 class="qr-title">Quality &amp; Reliability</h3>
+      <p class="qr-text">
+        USMANI TUBES VALVES CO. PRIVATE LIMITED (UTVC) is an ISO 9001:2008 certified company,
+        recognized as a trusted manufacturer and exporter of high-quality Industrial Valves.
+        Our products are engineered for durability and performance, serving a wide range of industries
+        including Chemical Processing, Petrochemicals, Power Generation, Oil &amp; Gas, Fertilizers,
+        Refineries, Food &amp; Beverages, Cement, Steam &amp; Heat Treatment Plants, Air, and Water Systems.
+      </p>
+      <a href="#" class="qr-btn">Continue Reading</a>
+    </div>
+
+    <!-- Divider -->
+    <div class="qr-divider"></div>
+
+    <!-- Right -->
+    <div class="qr-col">
+      <h3 class="qr-title">Quality Policy</h3>
+      <p class="qr-text">
+        At Usmani Valves, our Quality Policy is to continuously improve our processes, products, and services
+        in order to deliver on-time solutions of the highest value to our customers. We are committed to not only
+        meeting but exceeding customer requirements by ensuring unmatched quality, reliability, and performance.
+        With a constant focus on excellence and innovation, we strive to set new benchmarks in industrial valve manufacturing.
+      </p>
+      <a href="#" class="qr-btn">Continue Reading</a>
+    </div>
+  </div>
+</section>
+
+  <footer>
+  <div class="footer-top">
+    <div class="footer-col company-info">
+      <img src="utvc-footer-logo-2.jpeg.png" alt="Usmani Logo" class="footer-logo" />
+      <div class="divider"></div>
+      <p>
+        Virani Business Centre, B Wing 301,<br />
+        Opp. Bharath Gear Company Above<br />
+        Dawat Banquet Hall and Abhyudaya<br />
+        Bank Kausa Mumbra, Thane - 400612,
+      </p>
+      <p><i class="fas fa-envelope"></i> info@usmanivalves.com</p>
+      <p><i class="fas fa-phone"></i> +91 111 222 3330</p>
+      <div class="cert-logos">
+        <!-- <img src="usmani-header-certificates-logo.jpg" alt="CE" /> -->
+      </div>
+    </div>
+
+    <div class="footer-col links">
+      <h4>Company Links</h4>
+      <div class="link-grid">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="catalogues.html">CATALOGUE</a>
+        <a href="certificates.html">CERTIFICATES</a>
+        <a href="client.html">CLIENTS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="quote.html">Get a Quote</a>
+      </div>
+      <div class="divider"></div>
+      <h4>Products</h4>
+      <div class="products-grid">
+        <span>Ball Valve</span>
+        <span>Diaphragm Valve</span>
+        <span>Safety Valve</span>
+        <span>Check Valve</span>
+        <span>Butterfly Valve</span>
+        <span>Plug Valve</span>
+        <span>Control Valve</span>
+        <span>Globe Valve</span>
+        <span>Flush Valve</span>
+        <span>Disc Check Valve</span>
+        <span>Knife Gate</span>
+        <span>Basket Strainer Valve</span>
+        <span>Steam Trap</span>
+      </div>
+    </div>
+
+    <div class="footer-col subscribe">
+      <h4>Stay Connected</h4>
+      <p>
+        Subscribe for the latest valve news, product launches, and catalogues from
+        Usmani Tubes and Valves – trusted valve manufacturers in Mumbai, India.
+      </p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter Your Email Address" />
+        <button>→</button>
+      </div>
+      <div class="divider"></div>
+      <h4>Follow Usmani Tubes and Valves on</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Usmani Tubes And Valves Co. Pvt. Ltd. All Rights Reserved
+    <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Certificates</a>
+  </div>
+</footer>
+
+<script>
+const track = document.getElementById('heroTrack');
+const slides = track.children.length;
+const prev = document.getElementById('heroPrev');
+const next = document.getElementById('heroNext');
+const dotsContainer = document.getElementById('heroDots');
+
+let index = 0;
+let autoSlide;
+
+function goTo(i){
+  index = (i + slides) % slides;
+  track.style.transform = `translateX(-${index*100}vw)`;
+  updateDots();
+}
+
+function updateDots(){
+  Array.from(dotsContainer.children).forEach((dot, i)=>{
+    dot.classList.toggle('active', i===index);
+  });
+}
+
+function createDots(){
+  for(let i=0;i<slides;i++){
+    const b=document.createElement('button');
+    b.addEventListener('click', ()=>goTo(i));
+    dotsContainer.appendChild(b);
+  }
+}
+
+function startAuto(){
+  autoSlide = setInterval(()=>goTo(index+1),5000);
+}
+function stopAuto(){
+  clearInterval(autoSlide);
+}
+
+next.addEventListener('click', ()=>{goTo(index+1); stopAuto(); startAuto();});
+prev.addEventListener('click', ()=>{goTo(index-1); stopAuto(); startAuto();});
+
+createDots();
+goTo(0);
+startAuto();
+
+function goTo(i){
+  index = (i + slides) % slides;
+  // was: track.style.transform = `translateX(-${index*100}vw)`;
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+</script>
+
+
+</body>
+</html>

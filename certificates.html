@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usmani Tubes and Valves Co Pvt. Ltd</title>
+  <link rel="icon" href="iconutvc.png" type="image/png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#f7f7f8;--card:#ffffff;--text:#111315;--muted:#5b6168;--title:#2b2f36;--overlay:rgba(0,0,0,.88);
+      --radius:14px;--shadow:0 6px 24px rgba(0,0,0,.06);
+    }
+
+ 
+        :root{
+      --topbar-bg:#0056A4;
+      --topbar-fg:#fff;
+      --topbar-x:16px;
+      --topbar-y:6px;
+      --topbar-gap:18px;
+      --brand:#0056A4;
+      --accent:#f9b916;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar{
+      background: var(--topbar-bg);
+      color: var(--topbar-fg);
+      font-size:14px;
+      height: 40px;
+    }
+    .top-bar-inner{
+      width:100vw;
+      /*max-width:1399px;*/   /* align top bar with header */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--topbar-y) var(--topbar-x);
+      box-sizing:border-box;
+    }
+    .tb-left{
+      display:flex;
+      align-items:center;
+      gap: var(--topbar-gap);
+      font-weight: 800;
+      font-size: larger;
+      padding-left: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .tb-left span{ display:inline-flex; align-items:center; white-space:nowrap; }
+    .tb-left i{ margin-right:6px; }
+
+    .tb-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-right: 40px;
+    }
+
+    .tb-right img{
+      width:24px;
+      height:24px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header-main{ background:#fff; }
+    .header-main .container{
+      max-width:1399px;   /* ✅ image width */
+      margin:0 auto;
+      padding:10px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height: 140px;
+    }
+    #brandImg{
+      width:1399px;       /* ✅ fixed width */
+      max-width:100%;
+      display:block;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav-bar{ background: var(--accent); }
+    .nav-bar .container{
+      max-width:1299px;   /* ✅ match image width */
+      margin:0 auto;
+      padding:10px 0;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;  /* first link left, last button right */
+      align-items:center;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-menu a{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+      padding: 6px 2px;
+      position: relative;
+      outline: none;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      height:2px; width:0;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{ width:100%; }
+
+    .nav-menu a.active{ color: var(--brand); }
+
+    .nav-buttons{ display:flex; gap:10px; }
+
+    .nav-bar .nav-buttons a{
+      display:inline-block;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 800 !important;
+      font-size:16px;
+      padding:10px 20px;
+      border-radius:5px;
+      text-decoration:none;
+      transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    .nav-buttons .contact{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid #ddd;
+    }
+    .nav-buttons .contact:hover{
+      background:#fff;
+      color:#003e75;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-buttons .quote{
+      background:var(--brand);
+      color:#fff;
+      border:1px solid var(--brand);
+    }
+    .nav-buttons .quote:hover{
+      background:#004a90;
+      border-color:#004a90;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+      transform: translateY(-1px);
+    }
+
+
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:var(--text);background:var(--bg);line-height:1.5}
+    .wrap{max-width:1200px;padding:40px 18px 70px;margin:0 auto}
+    .title{font-size:clamp(20px,1.3rem + .4vw,28px);font-weight:700;margin:0 0 6px;color:var(--title);text-align:center}
+    .subtitle{color:var(--muted);font-size:14px;margin:0 0 20px;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .thumb{width:100%;aspect-ratio:16/11;object-fit:contain;background:#fff;display:block}
+    .meta{padding:12px 14px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .name{font-size:15px;font-weight:600;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .issuer{color:var(--muted);font-size:12px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:var(--overlay);z-index:9999}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:min(95vw,1400px);max-height:90vh;border-radius:8px;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .close{position:fixed;top:16px;right:16px;width:40px;height:40px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);cursor:pointer}
+    .caption{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);color:#eee;font-size:14px;text-align:center;background:rgba(0,0,0,.45);padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.14);max-width:80vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Stop 100vw overflow that causes the bottom scrollbar */
+.top-bar-inner { width: 100% !important; }     /* was 100vw */
+.hero-banner   { width: 100% !important; }     /* was 100vw */
+.hero-slide    { flex: 0 0 100% !important; }  /* was 100vw */
+
+/* Safety: never allow horizontal scrolling */
+html, body { overflow-x: hidden; }
+
+footer { background:#0060aa; color:#fff; margin-top:60px; }
+.footer-top { display:flex; justify-content:space-between; flex-wrap:wrap; padding:40px 60px; }
+.footer-col { flex:1; min-width:260px; margin:10px 20px; }
+.footer-logo { height:60px; margin-bottom:10px; }
+.footer-col h4 { font-size:16px; margin:15px 0 10px; font-weight:bold; }
+.footer-col p, .footer-col a, .products-grid span { font-size:14px; line-height:1.6; color:#fff; text-decoration:none; }
+.divider { border-top:1px solid rgba(255,255,255,0.4); margin:15px 0; }
+.link-grid { display:grid; grid-template-columns: repeat(2, auto); gap:5px 40px; }
+.subscribe-box { display:flex; margin:15px 0; border-radius:4px; overflow:hidden; max-width:320px; }
+.subscribe-box input { flex:1; padding:12px; border:none; font-size:14px; color:#333; }
+.subscribe-box button { background:#fdb913; border:none; padding:0 20px; cursor:pointer; font-size:16px; color:#000; font-weight:bold; transition:all 0.3s; }
+.subscribe-box button:hover { background:#e5a900; }
+.social-icons { display:flex; gap:12px; margin-top:10px; }
+.social-icons a { display:flex; align-items:center; justify-content:center; width:38px; height:38px; background:#fff; color:#0060aa; border-radius:6px; font-size:18px; transition:transform 0.3s; }
+.social-icons a:hover { transform:scale(1.15); }
+.cert-logos img { height:70px; margin:10px 15px 0 0; }
+.footer-bottom { background:#005299; text-align:center; padding:12px; font-size:13px; }
+.footer-bottom a { color:#fff; margin:0 8px; text-decoration:none; }
+.footer-bottom a:hover { text-decoration:underline; }
+.products-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px 20px; margin-top:10px; }
+.products-grid div, .products-grid span { font-size:14px; line-height:1.6; color:#fff; }
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; align-items: center; padding: 30px 20px; }
+  .footer-col { text-align: center; margin: 12px 0; max-width: 520px; min-width: auto; width: 100%; }
+}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .top-bar { padding: 8px 16px; }
+      .top-bar .left span { display: none; }
+      .top-bar .left i { font-size: 18px; }
+
+      .logo-text { flex-direction: column; align-items: center; gap: 6px; }
+      .brand { display: none; }
+      .logo-right { align-items: center; text-align:center; }
+
+      nav { padding: 12px 16px; }
+      .nav-center { order: 1; width: 100%; display:none; }
+      .nav-buttons { order: 2; }
+      .mobile-hamburger { order: 3; display:inline-block; margin-left: 8px; }
+      .mobile-menu { display:none; order: 4; }
+
+      .mobile-menu a { padding: 12px 8px; }
+
+      .about-block h2 { font-size: 26px; }
+      .about-block p { font-size: 15px; }
+      .stat-number { font-size: 36px; }
+      .timeline-title { font-size: 26px; }
+      
+
+    }
+
+    @media (max-width: 420px) {
+      .logo-with-text img { height: 52px; }
+      .logo-right .subbrand { font-size: 16px; }
+      .logo-right .tag { font-size: 12px; }
+      .top-bar .right i { margin-left: 8px; }
+      .about-section { margin: 30px auto; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="tb-left">
+        <span><i class="fa-solid fa-envelope"></i> info@usmanivalves.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9833868523</span>
+      </div>
+      <div class="tb-right">
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-main">
+    <div class="container">
+      <img src="Header.png" alt="Usmani Header" id="brandImg">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-menu">
+          <a href="index.html">HOME</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="products.html">PRODUCTS</a>
+          <a href="catalogues.html">CATALOGUE</a>
+          <a href="certificates.html" class="active">CERTIFICATES</a>
+          <a href="client.html">CLIENTS</a>
+          <a href="blog.html">BLOG</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="contact.html" class="contact">Contact Us</a>
+          <a href="quote.html" class="quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="wrap" aria-label="Certificates">
+    <h2 class="title">Certificates</h2>
+    <p class="subtitle">Click any card to view fullscreen.</p>
+
+    <div class="grid" id="certGrid">
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c1.jpg" alt="Certificate: Web Development" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c2.jpg" alt="Certificate: UI/UX Design" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c3.jpg" alt="Certificate: JavaScript Advanced" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <!-- Corrected fourth card (added missing "<") -->
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c4.jpg" alt="Certificate: Web Development 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c5.jpeg" alt="Certificate: UI/UX Design 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c6.jpg" alt="Certificate: JavaScript Advanced 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <!-- Corrected fourth card (added missing "<") -->
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c7.jpeg" alt="Certificate: Web Development 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c8.jpg" alt="Certificate: UI/UX Design 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+
+      <article class="card" tabindex="0">
+        <img class="thumb" src="c9.jpeg" alt="Certificate: JavaScript Advanced 2" />
+        <div class="meta">
+          <div class="name"></div>
+          <div class="issuer">UTVC</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="close" id="lbClose" aria-label="Close">×</button>
+    <img id="lbImg" alt="Certificate fullscreen" />
+    <div class="caption" id="lbCap" class="caption"></div>
+  </div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-col company-info">
+      <img src="utvc-footer-logo-2.jpeg.png" alt="Usmani Logo" class="footer-logo" />
+      <div class="divider"></div>
+      <p>
+        Virani Business Centre, B Wing 301,<br />
+        Opp. Bharath Gear Company Above<br />
+        Dawat Banquet Hall and Abhyudaya<br />
+        Bank Kausa Mumbra, Thane - 400612,
+      </p>
+      <p><i class="fas fa-envelope"></i> info@usmanivalves.com</p>
+      <p><i class="fas fa-phone"></i> +91 111 222 3330</p>
+      <div class="cert-logos">
+        <!-- <img src="usmani-header-certificates-logo.jpg" alt="CE" /> -->
+      </div>
+    </div>
+
+    <div class="footer-col links">
+      <h4>Company Links</h4>
+      <div class="link-grid">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="catalogues.html">CATALOGUE</a>
+        <a href="certificates.html">CERTIFICATES</a>
+        <a href="client.html">CLIENTS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="quote.html">Get a Quote</a>
+      </div>
+      <div class="divider"></div>
+      <h4>Products</h4>
+      <div class="products-grid">
+        <span>Ball Valve</span>
+        <span>Diaphragm Valve</span>
+        <span>Safety Valve</span>
+        <span>Check Valve</span>
+        <span>Butterfly Valve</span>
+        <span>Plug Valve</span>
+        <span>Control Valve</span>
+        <span>Globe Valve</span>
+        <span>Flush Valve</span>
+        <span>Disc Check Valve</span>
+        <span>Knife Gate</span>
+        <span>Basket Strainer Valve</span>
+        <span>Steam Trap</span>
+      </div>
+    </div>
+
+    <div class="footer-col subscribe">
+      <h4>Stay Connected</h4>
+      <p>
+        Subscribe for the latest valve news, product launches, and catalogues from
+        Usmani Tubes and Valves – trusted valve manufacturers in Mumbai, India.
+      </p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter Your Email Address" />
+        <button>→</button>
+      </div>
+      <div class="divider"></div>
+      <h4>Follow Usmani Tubes and Valves on</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Usmani Tubes And Valves Co. Pvt. Ltd. All Rights Reserved
+    <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Certificates</a>
+  </div>
+</footer>
+
+
+<script>
+  (function(){
+    const grid = document.getElementById('certGrid');
+    const lb   = document.getElementById('lightbox');
+    const lbImg= document.getElementById('lbImg');
+    const lbCap= document.getElementById('lbCap');
+    const lbClose = document.getElementById('lbClose');
+
+    // Build a list of cards and wire clicks
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    let currentIndex = -1;
+
+    function openLightbox(index){
+      const card = cards[index];
+      if(!card) return;
+      currentIndex = index;
+      const imgEl = card.querySelector('.thumb');
+      // Use the same image for fullscreen; remove data-full dependency
+      lbImg.src = imgEl.getAttribute('src');
+      lbCap.textContent = imgEl.getAttribute('alt') || 'Certificate';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lbImg.removeAttribute('src');
+      document.body.style.overflow = '';
+      currentIndex = -1;
+    }
+    function next(delta){
+      if(currentIndex < 0) return;
+      const n = (currentIndex + delta + cards.length) % cards.length;
+      openLightbox(n);
+    }
+
+    cards.forEach((card, i)=>{
+      card.addEventListener('click', ()=>openLightbox(i));
+      card.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(i); }
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+    window.addEventListener('keydown', (e)=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowRight') next(1);
+      if(e.key === 'ArrowLeft') next(-1);
+    });
+
+    // Swipe navigation
+    let startX=0, startY=0, t=0;
+    lb.addEventListener('touchstart',(e)=>{
+      const touch=e.changedTouches[0];
+      startX=touch.clientX; startY=touch.clientY; t=Date.now();
+    },{passive:true});
+    lb.addEventListener('touchend',(e)=>{
+      const touch=e.changedTouches[0];
+      const dx=touch.clientX-startX, dy=touch.clientY-startY, dt=Date.now()-t;
+      if(Math.abs(dx)>40 && Math.abs(dy)<60 && dt<800){ next(dx<0?1:-1); }
+    });
+  })();
+</script>
+</body>
+</html>
