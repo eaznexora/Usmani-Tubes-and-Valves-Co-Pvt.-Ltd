@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usmani Valves – Products</title>
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    /* --- Global Reset & Fonts --- */
+    body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; scroll-behavior:smooth; }
+    img { max-width:100%; display:block; }
+    button, a { font-family:inherit; }
+
+        :root{
+      --topbar-bg:#0056A4;
+      --topbar-fg:#fff;
+      --topbar-x:16px;
+      --topbar-y:6px;
+      --topbar-gap:18px;
+      --brand:#0056A4;
+      --accent:#f9b916;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar{
+      background: var(--topbar-bg);
+      color: var(--topbar-fg);
+      font-size:14px;
+      height: 40px;
+    }
+    .top-bar-inner{
+      width:100vw;
+      /*max-width:1399px;*/   /* align top bar with header */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: var(--topbar-y) var(--topbar-x);
+      box-sizing:border-box;
+    }
+    .tb-left{
+      display:flex;
+      align-items:center;
+      gap: var(--topbar-gap);
+      padding-left: 20px;
+      font-weight: 800;
+      font-size: larger;
+      padding-left: 40px;
+    }
+    .tb-left span{ display:inline-flex; align-items:center; white-space:nowrap; }
+    .tb-left i{ margin-right:6px; }
+
+    .tb-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding-right: 40px;
+    }
+
+    .tb-right img{
+      width:24px;
+      height:24px;
+      object-fit: contain;
+      display: inline-block;
+    }
+
+    /* ---------- HEADER ---------- */
+    .header-main{ background:#fff; }
+    .header-main .container{
+      max-width:1399px;   /* ✅ image width */
+      margin:0 auto;
+      padding:10px 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height: 120px;
+    }
+    #brandImg{
+      width:1399px;       /* ✅ fixed width */
+      max-width:100%;
+      display:block;
+    }
+
+    /* ---------- NAV ---------- */
+    .nav-bar{ background: var(--accent); }
+    .nav-bar .container{
+      max-width:1299px;   /* ✅ match image width */
+      margin:0 auto;
+      padding:10px 0;
+    }
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;  /* first link left, last button right */
+      align-items:center;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:30px;
+      align-items:center;
+    }
+
+    .nav-menu a{
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+      padding: 6px 2px;
+      position: relative;
+      outline: none;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      height:2px; width:0;
+      background: var(--brand);
+      transition: width .25s ease;
+    }
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{ width:100%; }
+
+    .nav-menu a.active{ color: var(--brand); }
+
+    .nav-buttons{ display:flex; gap:10px; }
+
+    .nav-bar .nav-buttons a{
+      display:inline-block;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 800 !important;
+      font-size:16px;
+      padding:10px 20px;
+      border-radius:5px;
+      text-decoration:none;
+      transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    .nav-buttons .contact{
+      background:#fff;
+      color:var(--brand);
+      border:1px solid #ddd;
+    }
+    .nav-buttons .contact:hover{
+      background:#fff;
+      color:#003e75;
+      box-shadow:0 2px 8px rgba(0,0,0,.12);
+      transform: translateY(-1px);
+    }
+
+    .nav-buttons .quote{
+      background:var(--brand);
+      color:#fff;
+      border:1px solid var(--brand);
+    }
+    .nav-buttons .quote:hover{
+      background:#004a90;
+      border-color:#004a90;
+      box-shadow:0 2px 10px rgba(0,0,0,.15);
+      transform: translateY(-1px);
+    }
+
+
+    /* --- Layout Containers --- */
+    .catalog-container, .page-container { display:flex; gap:30px; padding:40px 20px; max-width:1200px; margin:0 auto;}
+    .catalog-sidebar { flex:0 0 220px; position:sticky; top:20px; }
+    .category-table { width:100%; border-collapse:collapse; }
+    .category-table th { background:#0056a3; color:#fff; padding:12px; text-align:left; }
+    .category-table td { background:#f7f7f7; padding:10px 12px; border-bottom:1px solid #ddd; }
+    .category-table tr.active td { background:#e1e7f2; }
+    .category-table a { color:#333; text-decoration:none; display:block; transition:.2s;}
+    .category-table a:hover { background:#e0e0e0; padding-left:8px; }
+
+    /* --- Catalog Grid --- */
+    .catalog-main { flex:1; }
+    .catalog-header { text-align:center; margin-bottom:24px; }
+    .catalog-header h2 { font-size:28px; margin:0 0 8px; position:relative; display:inline-block;}
+    .catalog-header h2::after { content:""; position:absolute; bottom:-6px; left:20%; width:60%; height:2px; background:#0056a3;}
+    .catalog-header p { color:#555; font-size:15px; line-height:1.6; max-width:800px; margin:0 auto; }
+    .catalog-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:20px; }
+
+    /* Card like reference */
+    .catalog-item { 
+      background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.12);
+      overflow:hidden; transition:transform .15s ease, box-shadow .15s ease;
+      padding:12px; display:flex; flex-direction:column; gap:10px;
+      opacity:0; transform:translateY(20px);
+    }
+    .catalog-item.visible { opacity:1; transform:translateY(0); }
+    .catalog-item:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.16); }
+    .catalog-item > img { width:100%; height:150px; object-fit:contain; border-radius:6px; background:#fff; }
+    .catalog-item-content { padding:0; text-align:center; }
+    .catalog-item-content h4 { margin:4px 0 6px; font-size:18px; font-weight:600; color:#333; }
+
+    .catalog-buttons { display:flex; gap:10px; justify-content:flex-start; }
+    .catalog-buttons .btn-quote,
+    .catalog-buttons .btn-info { 
+      flex:0 0 auto; padding:8px 14px; border-radius:6px; font-size:14px; font-weight:600; line-height:1; border:1px solid transparent; cursor:pointer;
+    }
+    /* Primary blue like sample */
+    .catalog-buttons .btn-quote { background:#1976d2; color:#fff; border-color:#1976d2; text-decoration:none; }
+    .catalog-buttons .btn-quote:hover { background:#165fa9; border-color:#165fa9; }
+    /* Gray secondary like sample */
+    .catalog-buttons .btn-info { background:#e0e0e0; color:#555; border-color:#d5d5d5; }
+    .catalog-buttons .btn-info:hover { background:#d6d6d6; }
+
+    /* --- Pagination --- */
+    .pagination { text-align:center; padding:20px 0; }
+    .page-btn { border:1px solid #ccc; background:none; color:#444; margin:0 4px; padding:6px 12px; cursor:pointer; transition:.2s; }
+    .page-btn:hover { background:#f0f0f0; }
+    .page-btn.active { background:#0056a3; color:#fff; border-color:#0056a3; }
+    .page-btn.prev, .page-btn.next { font-weight:bold; }
+
+     /* ===== Pixel-accurate detail layout ===== */
+
+/* Layout frame */
+.detail-pixel { padding: 24px 20px !important; gap: 28px !important; }
+.detail-pixel__sidebar { flex: 0 0 280px !important; }
+
+/* Sidebar visuals */
+.detail-cats thead th{
+  background:#0d47a1 !important;
+  color:#fff !important;
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:.2px;
+  padding:12px 14px !important;
+}
+.detail-cats tbody td{
+  background:#f3f4f6 !important;
+  padding:0 !important;
+  border-bottom:1px solid #e5e7eb !important;
+}
+.detail-cats tbody a{
+  display:block;
+  padding:12px 14px;
+  color:#1f2937;
+  text-decoration:none;
+  font-size:14px;
+  line-height:1.25;
+}
+.detail-cats tbody tr.active td{ background:#fff6bf !important; } /* pale yellow like shot */
+
+/* Header area */
+.detail-pixel__header{ margin: 0 0 10px; position: relative; }
+.detail-pixel__title{
+  margin:0 32px 4px 0;
+  font-size:30px;
+  line-height:1.15;
+  color:#1e63c8;             /* strong blue as in shot */
+  letter-spacing: .2px;
+}
+.detail-pixel__share{
+  position:absolute;
+  top:6px; right:0;
+  color:#1b8a37;             /* green share icon */
+  font-size:18px;
+  cursor:pointer;
+}
+.detail-pixel__sub{
+  margin:0 0 10px;
+  color:#6b7280;
+  font-size:14px;
+  line-height:1.5;
+  max-width: 720px;
+}
+.detail-pixel__rule{
+  border:0;
+  border-top:1px solid #e5e7eb;
+  margin: 0;
+}
+
+/* Two-column grid (text left, image/CTAs right) */
+.detail-pixel__grid{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  align-items:start;
+  gap: 24px;
+}
+
+/* Features block */
+.detail-pixel__featTitle{
+  margin: 6px 0 10px;
+  font-size:18px;
+  color:#1f2937;
+  letter-spacing:.2px;
+}
+.detail-specs{
+  font-size:14px;
+  color:#111;
+  line-height:1.55;
+}
+.detail-pixel__features{ padding-right: 8px; }
+
+/* Right column: image card */
+.detail-pixel__imgCard{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.detail-pixel__imgCard img{
+  width:100%;
+  max-width:260px;
+  height:auto;
+  margin:0 auto;
+  display:block;
+}
+
+/* Hide thumbs to match screenshot (JS can still find .mySwiper) */
+.detail-pixel__thumbs{ display:none !important; }
+
+/* CTA stack */
+.detail-pixel__cta{
+  margin-top: 16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.detail-pixel__btnPDF{
+  height:44px;
+  border:none;
+  border-radius:8px;
+  background:#ef233c;   /* red */
+  color:#fff;
+  font-weight:700;
+  font-size:16px;
+  cursor:pointer;
+}
+.detail-pixel__btnQuote{
+  height:44px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  background:#0d47a1;   /* blue */
+  color:#fff;
+  font-weight:700;
+  font-size:16px;
+}
+.detail-pixel__more{
+  margin-top:2px;
+  font-size:14px;
+  color:#1e63c8;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:0.2px;
+  transition: color .2s ease;
+}
+
+/* === SEE MORE PRODUCTS: match screenshot exactly === */
+
+.detail-pixel__more{
+  display: block;                   /* so text-align works */
+  text-align: center;               /* centered like the shot */
+  margin-top: 14px;                 /* spacing below buttons */
+  font-size: 18px;                  /* bigger text */
+  font-weight: 700;                 /* bold */
+  color: #737373 !important;           /* dark gray (not blue) */
+  text-decoration: none;
+  letter-spacing: .2px;
+  line-height: 1.25;
+}
+
+.detail-pixel__more:hover{
+  color: #000 !important;           /* subtle hover */
+  text-decoration: underline;
+}
+
+
+/* Mobile stacking */
+@media (max-width: 900px){
+  .detail-pixel__grid{ grid-template-columns: 1fr; gap:16px; }
+  .detail-pixel__sidebar{ position:relative; top:auto; }
+  .detail-pixel__imgCard{ max-width: 360px; margin: 0 auto; }
+}
+
+
+    /* Get Quote button */
+.btn-quote,
+a.btn-quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: #1976d2;          /* primary blue */
+  border: 1px solid #1976d2;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+}
+
+.btn-quote:hover,
+a.btn-quote:hover {
+  background: #165fa9;          /* hover blue */
+  border-color: #165fa9;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.35);
+}
+
+.btn-quote:active,
+a.btn-quote:active {
+  transform: translateY(1px);
+}
+
+.btn-quote:focus-visible,
+a.btn-quote:focus-visible {
+  outline: 2px solid #0d47a1;
+  outline-offset: 2px;
+}
+
+/* Optional: compact size for tight layouts */
+.btn-quote.sm { padding: 8px 14px; font-size: 13px; }
+
+/* Optional: full-width on mobile when needed */
+@media (max-width: 480px){
+  .btn-quote.block { display:flex; width:100%; }
+}
+
+
+/* Stop 100vw overflow that causes the bottom scrollbar */
+.top-bar-inner { width: 100% !important; }     /* was 100vw */
+.hero-banner   { width: 100% !important; }     /* was 100vw */
+.hero-slide    { flex: 0 0 100% !important; }  /* was 100vw */
+
+/* Safety: never allow horizontal scrolling */
+html, body { overflow-x: hidden; }
+
+footer{background:#0060aa;color:#fff;margin-top:60px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;padding:40px 60px}
+.footer-col{flex:1;min-width:260px;margin:10px 20px}
+.footer-logo{height:60px;margin-bottom:10px}
+.footer-col h4{font-size:16px;margin:15px 0 10px;font-weight:bold}
+.footer-col p,.footer-col a,.products-grid span{font-size:14px;line-height:1.6;color:#fff;text-decoration:none}
+.divider{border-top:1px solid rgba(255,255,255,0.4);margin:15px 0}
+.link-grid{display:grid;grid-template-columns:repeat(2,auto);gap:5px 40px}
+.subscribe-box{display:flex;margin:15px 0;border-radius:4px;overflow:hidden;max-width:320px}
+.subscribe-box input{flex:1;padding:12px;border:none;font-size:14px;color:#333}
+.subscribe-box button{background:#fdb913;border:none;padding:0 20px;cursor:pointer;font-size:16px;color:#000;font-weight:bold;transition:all .3s}
+.subscribe-box button:hover{background:#e5a900}
+.social-icons{display:flex;gap:12px;margin-top:10px}
+.social-icons a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:#fff;color:#0060aa;border-radius:6px;font-size:18px;transition:transform .3s}
+.social-icons a:hover{transform:scale(1.15)}
+.cert-logos img{height:70px;margin:10px 15px 0 0}
+.footer-bottom{background:#005299;text-align:center;padding:12px;font-size:13px}
+.footer-bottom a{color:#fff;margin:0 8px;text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px 20px;margin-top:10px}
+.products-grid div,.products-grid span{font-size:14px;line-height:1.6;color:#fff}
+
+@media (max-width:768px){
+  .footer-top{flex-direction:column;align-items:center;padding:30px 20px}
+  .footer-col{text-align:center;margin:12px 0;max-width:520px;min-width:auto;width:100%}
+}
+
+
+    @media(max-width:768px){
+      .mobile-hamburger{display:inline-block;}
+      nav.site-nav .nav-center{display:none;}
+      .mobile-menu{display:flex;}
+      .catalog-container,.page-container{flex-direction:column;padding:20px;}
+      .catalog-sidebar{position:relative;top:auto;margin-bottom:20px;}
+      .footer-top{flex-direction:column;align-items:center;padding:30px 20px;}
+      .detail-content{flex-direction:column;}
+      .swiper{width:100%!important;}
+      .catalog-item > img { height:140px; }
+    }
+    
+    /* --------------------------
+   FINAL CLEAN LOOK — MATCH SAMPLE
+--------------------------- */
+
+/* Keep exactly 3 cards per row on desktop */
+#catalogSection .catalog-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 22px !important;
+}
+
+/* Card */
+#catalogSection .catalog-item,
+#catalogSection .catalog-item.visible {
+  background: #fff !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05) !important;
+  padding: 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Product Image */
+#catalogSection .catalog-item > img {
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: contain !important;
+  margin: 0 auto 6px !important;
+}
+
+/* ---- Center product name ---- */
+#catalogSection .catalog-item-content h4 {
+  text-align: center;
+  font-weight: 500;   /* not too bold */
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+
+/* Title — not too bold */
+#catalogSection .catalog-item-content {
+  text-align: left !important;
+  padding: 0 !important;
+}
+#catalogSection .catalog-item-content h4 {
+  margin: 4px 0 10px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;  /* softer bold */
+  color: #111 !important;
+  font-family: 'Poppins', Arial, sans-serif !important;
+}
+
+/* ---- PRODUCT CARD BUTTONS FIX ---- */
+#catalogSection .catalog-buttons {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap; /* allow wrapping if card is small */
+}
+
+#catalogSection .catalog-buttons .btn-quote,
+#catalogSection .catalog-buttons .btn-info {
+  flex: 1 1 48%;          /* each button about half the card width */
+  max-width: 140px;       /* keep them balanced but not overflow */
+  min-width: 100px;       /* not too tiny */
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Blue Get Quote button */
+#catalogSection .catalog-buttons .btn-quote {
+  background: #0056d2;
+  color: #fff;
+}
+
+/* Gray Know More button */
+#catalogSection .catalog-buttons .btn-info {
+  background: #e0e0e0;
+  color: #555;
+}
+
+/* Hover effects */
+#catalogSection .catalog-buttons .btn-quote:hover {
+  background: #0041a8;
+}
+#catalogSection .catalog-buttons .btn-info:hover {
+  background: #d6d6d6;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div class="tb-left">
+        <span><i class="fa-solid fa-envelope"></i> info@usmanivalves.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9833868523</span>
+      </div>
+      <div class="tb-right">
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+        <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-main">
+    <div class="container">
+      <img src="Header.png" alt="Usmani Header" id="brandImg">
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-menu">
+          <a href="index.html">HOME</a>
+          <a href="aboutus.html">ABOUT US</a>
+          <a href="products.html" class="active">PRODUCTS</a>
+          <a href="catalogues.html">CATALOGUE</a>
+          <a href="certificates.html">CERTIFICATES</a>
+          <a href="client.html">CLIENTS</a>
+          <a href="blog.html">BLOG</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="contact.html" class="contact">Contact Us</a>
+          <a href="quote.html" class="quote">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <button class="mobile-hamburger" id="mobileHamburger"><i class="fas fa-bars"></i></button>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="products.html">Products</a>
+      <a href="">Valve Gallery</a>
+      <a href="#">Quality Policy</a>
+      <a href="#">Catalogue</a>
+      <a href="client.html">Clients</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- CATALOG -->
+    <section class="catalog-container" id="catalogSection">
+      <nav class="catalog-sidebar">
+        <table class="category-table">
+          <thead><tr><th>Categories</th></tr></thead>
+          <tbody id="categoryBody"></tbody>
+        </table>
+      </nav>
+      <div class="catalog-main">
+        <div class="catalog-header">
+          <h2 id="catalogTitle">Ball Valves</h2>
+          <p id="catalogDesc">Engineered for reliable flow control with secure, quarter-turn operation across industrial applications.</p>
+        </div>
+        <div class="catalog-grid" id="productGrid"></div>
+        <nav class="pagination" id="pagination"></nav>
+      </div>
+    </section>
+
+   <!-- DETAIL (Hidden) -->
+<section class="page-container detail-pixel" id="detailSection" style="display:none;">
+  <!-- LEFT: Category list -->
+  <aside class="catalog-sidebar detail-pixel__sidebar">
+    <table class="category-table detail-cats">
+      <thead>
+        <tr><th id="detailCategoryHeader">Ball Valves</th></tr>
+      </thead>
+      <tbody id="detailCategoryBody"></tbody>
+    </table>
+  </aside>
+
+  <!-- RIGHT: Content -->
+  <div class="detail-main visible detail-pixel__main">
+    <div class="detail-header detail-pixel__header">
+      <h1 id="detailTitle" class="detail-pixel__title"></h1>
+      <i class="fas fa-share-alt detail-pixel__share" title="Share"></i>
+      <p id="detailDesc" class="detail-pixel__sub"></p>
+      <hr class="detail-pixel__rule">
+    </div>
+
+    <div class="detail-pixel__grid">
+      <!-- LEFT column: Salient Features -->
+      <div class="detail-pixel__features">
+        <h3 class="detail-pixel__featTitle">Salient Features</h3>
+        <div class="detail-specs" id="detailSpecs"></div>
+      </div>
+
+      <!-- RIGHT column: Image + CTAs -->
+      <div class="detail-pixel__right">
+        <div class="detail-pixel__imgCard">
+          <img id="mainImage" src="" alt="">
+        </div>
+
+        <!-- Keep Swiper in DOM for your JS; hidden to match screenshot -->
+        <div class="swiper mySwiper detail-pixel__thumbs">
+          <div class="swiper-wrapper" id="detailSwiperWrapper"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="detail-pixel__cta">
+          <button class="detail-pixel__btnPDF" id="downloadPdfBtn" type="button">Download PDF</button>
+          <a class="detail-pixel__btnQuote" id="detailQuoteBtn" href="quote.html">Get Quote</a>
+          <a class="detail-pixel__more" id="seeMoreLink" href="#catalogSection">See More Products →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-col company-info">
+      <img src="utvc-footer-logo-2.jpeg.png" alt="Usmani Logo" class="footer-logo" />
+      <div class="divider"></div>
+      <p>
+        Virani Business Centre, B Wing 301,<br />
+        Opp. Bharath Gear Company Above<br />
+        Dawat Banquet Hall and Abhyudaya<br />
+        Bank Kausa Mumbra, Thane - 400612,
+      </p>
+      <p><i class="fas fa-envelope"></i> info@usmanivalves.com</p>
+      <p><i class="fas fa-phone"></i> +91 111 222 3330</p>
+      <div class="cert-logos">
+        <!-- <img src="usmani-header-certificates-logo.jpg" alt="CE" /> -->
+      </div>
+    </div>
+
+    <div class="footer-col links">
+      <h4>Company Links</h4>
+      <div class="link-grid">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">ABOUT US</a>
+        <a href="products.html">PRODUCTS</a>
+        <a href="catalogues.html">CATALOGUE</a>
+        <a href="certificates.html">CERTIFICATES</a>
+        <a href="client.html">CLIENTS</a>
+        <a href="blog.html">BLOG</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="quote.html">Get a Quote</a>
+      </div>
+      <div class="divider"></div>
+      <h4>Products</h4>
+      <div class="products-grid">
+        <span>Ball Valve</span>
+        <span>Diaphragm Valve</span>
+        <span>Safety Valve</span>
+        <span>Check Valve</span>
+        <span>Butterfly Valve</span>
+        <span>Plug Valve</span>
+        <span>Control Valve</span>
+        <span>Globe Valve</span>
+        <span>Flush Valve</span>
+        <span>Disc Check Valve</span>
+        <span>Knife Gate</span>
+        <span>Basket Strainer Valve</span>
+        <span>Steam Trap</span>
+      </div>
+    </div>
+
+    <div class="footer-col subscribe">
+      <h4>Stay Connected</h4>
+      <p>
+        Subscribe for the latest valve news, product launches, and catalogues from
+        Usmani Tubes and Valves – trusted valve manufacturers in Mumbai, India.
+      </p>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Enter Your Email Address" />
+        <button>→</button>
+      </div>
+      <div class="divider"></div>
+      <h4>Follow Usmani Tubes and Valves on</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Usmani Tubes And Valves Co. Pvt. Ltd. All Rights Reserved
+    <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Certificates</a>
+  </div>
+</footer>
+
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+
+  
+(function(){
+  var hamburger=document.getElementById('mobileHamburger');
+  var mobileMenu=document.getElementById('mobileMenu');
+
+  function checkSmall(){
+    var mq=window.matchMedia('(max-width: 768px)');
+    if(mq.matches) hamburger.style.display='inline-block';
+    else{ hamburger.style.display='none'; mobileMenu.style.display='none'; }
+  }
+  checkSmall();
+  window.addEventListener('resize',checkSmall);
+
+  hamburger?.addEventListener('click',function(e){
+    e.stopPropagation();
+    mobileMenu.style.display = (mobileMenu.style.display==='flex') ? 'none' : 'flex';
+    mobileMenu.setAttribute('aria-hidden', mobileMenu.style.display==='flex' ? 'false' : 'true');
+  });
+
+  document.addEventListener('click',function(e){
+    if(mobileMenu && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)){
+      mobileMenu.style.display='none';
+      mobileMenu.setAttribute('aria-hidden','true');
+    }
+  });
+})();
+
+
+    // --- Sample Data ---
+    const productCategories = [
+      {
+        name: "Floating Ball Valves",
+        desc: "Engineered for reliable flow control with secure, quarter-turn operation across industrial applications.",
+        types: [
+          {
+            name: "Ball Valve Three Piece",
+            desc: "High-performance three-piece ball valve with blow-out proof stem.",
+            mainImage: "pro1.jpg",
+            gallery:[ "ball-valve.jpeg","ball-valve.jpeg" ],
+            specs:[ "<strong>Design:</strong> Three Piece Ball valve blow out proof stem construction",
+    "<strong>Material:</strong> CS ASTM A 216 Gr. WCB, A105, LF2, CF8, CF8M etc.",
+    "<strong>Ball & Trims:</strong> SS 304, 304L, 316, 316L",
+    "<strong>Seat:</strong> PTFE, GFT, CFT",
+    "<strong>Action:</strong> Manual, Leverr",
+    "<strong>Rating:</strong> ASA 800",
+    "<strong>Ends Connection:</strong> Screwed ends, Socket weld, Butt weld",
+    "<strong>Port:</strong> Full & Reduce",
+    "<strong>Manufacturing Standard:</strong> BS 5351 / B16.34 / API 6D, API 609 / MSS SP 72",
+    "<strong>Testing Standard:</strong> API 598 / BS 6755",
+    "<strong>Applications:</strong> Air, Gas, Water, Chemicals, Pharma, Oil, Acid, Foods, Vacuum, Heat Treatment, Paper & Sugar Industries" ]
+          },
+        ]
+      },
+      {
+        name: "Trunnion mounted Ball Valve",
+        desc: "Space-efficient valves offering quick shutoff and throttling with resilient seats.",
+        types: [
+          {
+            name: "Wafer Butterfly Valve",
+            desc: "Compact wafer style butterfly valve with EPDM seat.",
+            mainImage: "butterfly-valve.jpg",
+            gallery:[ "butterfly-valve.jpeg","butterfly-valve.jpeg" ],
+            specs:[ "<strong>Size:</strong> 50–300 mm", "<strong>Seat:</strong> EPDM" ]
+          },
+          {
+            name: "Lug Butterfly Valve",
+            desc: "Lug type butterfly valve for dead-end service.",
+            mainImage: "butterfly-valve.jpg",
+            gallery:[ "butterfly-valve.jpg","butterfly-valve.jpg" ],
+            specs:[ "<strong>Rating:</strong> PN16", "<strong>Disc:</strong> Ductile Iron" ]
+          }
+        ]
+      },
+      {
+        name: "Cast Steel Globe Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+        {
+        name: "Forged Steel GLobe Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Cast Steel GATE VALVE",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Forged Steel GATE VALVE",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Check Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Butterfly Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Strainer 'Y' Type",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Steam trap TD 3",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Saftey Relief Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Diaphragm Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Plug Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Needle Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Basket Strainer Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Knife Gate Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Double Window Sight Glass",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Full View Sight Glass",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Foot Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "PTFE LIned Diaphragm Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+      {
+        name: "Flush Bottom Valve",
+        desc: "Linear-motion isolation valves designed for minimal pressure drop when fully open.",
+        types: [
+          {
+            name: "Rising Stem Gate Valve",
+            desc: "Rising stem gate valve with OS&Y bonnet.",
+            mainImage: "gate-rising.jpg",
+            gallery:[ "gate-rising.jpg","gate-wedge.jpg" ],
+            specs:[ "<strong>Material:</strong> ASTM A216 WCB", "<strong>End:</strong> Flanged" ]
+          },
+          {
+            name: "Wedge Gate Valve",
+            desc: "Solid wedge gate valve for general service.",
+            mainImage: "gate-wedge.jpg",
+            gallery:[ "gate-wedge.jpg","gate-rising.jpg" ],
+            specs:[ "<strong>Rating:</strong> CL150", "<strong>Disc:</strong> Bronze" ]
+          }
+        ]
+      },
+    ];
+
+    // Fix "See More Products" button behavior
+document.getElementById('seeMoreLink').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Hide detail, show catalog
+  document.getElementById('detailSection').style.display = 'none';
+  document.getElementById('catalogSection').style.display = 'flex';
+
+  // Smooth scroll to top of catalog
+  document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
+});
+
+
+    // --- State ---
+    let activeCategoryIndex = 0;
+    let products = [...productCategories[activeCategoryIndex].types];
+    const itemsPerPage = 12;
+    let currentPage = 1;
+    let swiperInstance = null;
+
+    // --- Helpers ---
+    const byId = (id) => document.getElementById(id);
+
+    function renderCategories(){
+      const catBody = byId('categoryBody');
+      catBody.innerHTML="";
+      productCategories.forEach((cat,idx)=>{
+        const tr = document.createElement('tr');
+        tr.classList.toggle('active', idx===activeCategoryIndex);
+        tr.innerHTML=`<td><a href="#">${cat.name}</a></td>`;
+        tr.onclick=()=>{
+          document.querySelectorAll('#categoryBody tr').forEach(r=>r.classList.remove('active'));
+          tr.classList.add('active');
+          activeCategoryIndex = idx;
+          const activeCat = productCategories[activeCategoryIndex];
+          byId('catalogTitle').textContent = activeCat.name;
+          byId('catalogDesc').textContent = activeCat.desc || (activeCat.types[0]?.desc || "");
+          products = [...activeCat.types];
+          currentPage=1;
+          renderProducts();
+        };
+        catBody.appendChild(tr);
+      });
+
+      const activeCat = productCategories[activeCategoryIndex];
+      byId('catalogTitle').textContent = activeCat.name;
+      byId('catalogDesc').textContent = activeCat.desc || (activeCat.types[0]?.desc || "");
+    }
+
+    function renderProducts(){
+      const grid = byId('productGrid');
+      grid.innerHTML="";
+      const start=(currentPage-1)*itemsPerPage;
+      const pageItems = products.slice(start, start+itemsPerPage);
+
+      pageItems.forEach((p,i)=>{
+        const absoluteIndex = start + i;
+        const card=document.createElement('div');
+        card.className='catalog-item';
+        card.innerHTML=`
+          <img src="${p.mainImage}" alt="${p.name}" loading="lazy">
+          <div class="catalog-item-content">
+            <h4>${p.name}</h4>
+            <div class="catalog-buttons">
+              <a class="btn-quote" href="quote.html?product=${encodeURIComponent(p.name)}">Get Quote</a>
+              <button class="btn-info" type="button">Know More</button>
+            </div>
+          </div>`;
+        card.querySelector('.btn-info').onclick=() => showDetail(absoluteIndex);
+        card.querySelector('img').onclick=() => showDetail(absoluteIndex);
+        grid.appendChild(card);
+        setTimeout(()=>card.classList.add('visible'), i*100);
+      });
+      renderPagination();
+    }
+
+    function renderPagination(){
+      const pag=byId('pagination');
+      pag.innerHTML="";
+      const pageCount=Math.ceil(products.length/itemsPerPage);
+      if (pageCount<=1) return;
+
+      const prev=document.createElement('button');
+      prev.textContent='previous';
+      prev.className='page-btn prev';
+      prev.disabled = currentPage===1;
+      prev.onclick=()=>{ if(currentPage>1){ currentPage--; renderProducts(); } };
+      pag.appendChild(prev);
+
+      for(let i=1;i<=pageCount;i++){
+        const btn=document.createElement('button');
+        btn.textContent=i;
+        btn.className='page-btn'+(i===currentPage?' active':'');
+        btn.onclick=()=>{currentPage=i;renderProducts();};
+        pag.appendChild(btn);
+      }
+
+      const next=document.createElement('button');
+      next.textContent='next';
+      next.className='page-btn next';
+      next.disabled = currentPage===pageCount;
+      next.onclick=()=>{ if(currentPage<pageCount){ currentPage++; renderProducts(); } };
+      pag.appendChild(next);
+    }
+
+    function showDetail(absoluteIndex){
+      const activeCatName = document.querySelector('#categoryBody tr.active td a').textContent;
+      const mainCat = productCategories.find(c=>c.name===activeCatName);
+      const detail = mainCat.types[absoluteIndex];
+
+      byId('catalogSection').style.display='none';
+      const detailSection = byId('detailSection');
+      detailSection.style.display='flex';
+
+      // Sidebar
+      const hdr=byId('detailCategoryHeader'); hdr.textContent=mainCat.name;
+      const body=byId('detailCategoryBody'); body.innerHTML="";
+      mainCat.types.forEach((t,i)=>{
+        const r=document.createElement('tr');
+        r.classList.toggle('active', i===absoluteIndex);
+        r.innerHTML=`<td><a href="#">${t.name}</a></td>`;
+        r.onclick=()=>showDetail(i);
+        body.appendChild(r);
+      });
+
+      // Content
+      byId('detailTitle').textContent=detail.name;
+      byId('detailDesc').textContent=detail.desc;
+      const mainImage = byId('mainImage');
+      mainImage.src=detail.mainImage;
+      mainImage.alt=detail.name;
+
+      const sw=byId('detailSwiperWrapper'); sw.innerHTML="";
+      detail.gallery.forEach(img=>{
+        const d=document.createElement('div'); d.className='swiper-slide';
+        d.innerHTML=`<img src="${img}" alt="${detail.name}" loading="lazy">`;
+        sw.appendChild(d);
+      });
+
+      const specs=byId('detailSpecs');
+      specs.innerHTML=detail.specs.map(s=>`<p>${s}</p>`).join('');
+
+      // Quote link with context
+      const q = byId('detailQuoteBtn');
+      q.href = `quote.html?product=${encodeURIComponent(detail.name)}`;
+
+      // Destroy old swiper if exists
+      if (swiperInstance && typeof swiperInstance.destroy === 'function') {
+        swiperInstance.destroy(true, true);
+        swiperInstance = null;
+      }
+
+      // Init swiper
+      swiperInstance = new Swiper('.mySwiper',{
+        loop: detail.gallery.length > 3,
+        navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
+        slidesPerView:3, spaceBetween:10,
+        breakpoints:{640:{slidesPerView:3},320:{slidesPerView:2}}
+      });
+
+      // Protect Swiper init in showDetail()
+const swiperEl = document.querySelector('.mySwiper');
+if (swiperInstance && typeof swiperInstance.destroy === 'function') {
+  swiperInstance.destroy(true, true);
+  swiperInstance = null;
+}
+if (swiperEl) {
+  swiperInstance = new Swiper('.mySwiper', {
+    loop: detail.gallery.length > 3,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    slidesPerView: 3,
+    spaceBetween: 10,
+    breakpoints: { 640: { slidesPerView: 3 }, 320: { slidesPerView: 2 } }
+  });
+}
+
+
+      // Thumbnail click -> update main
+      detailSection.querySelectorAll('.swiper-slide img').forEach(img=>img.onclick=()=>{
+        mainImage.src=img.src;
+      });
+
+      // Back
+      byId('backToCatalog').onclick=()=>{
+        detailSection.style.display='none';
+        byId('catalogSection').style.display='flex';
+        requestAnimationFrame(()=>renderProducts());
+      };
+    }
+
+    window.onload = () => {
+      renderCategories();
+      renderProducts();
+    };
+
+    // Mobile menu
+    (()=>{
+      const ham=document.getElementById('mobileHamburger'), menu=document.getElementById('mobileMenu');
+      function applyResponsive(){ if(window.innerWidth<=768){ ham.style.display='inline-block'; } else { ham.style.display='none'; menu.style.display='none'; } }
+      applyResponsive(); window.addEventListener('resize',applyResponsive);
+      ham.addEventListener('click',(e)=>{ e.stopPropagation(); menu.style.display = (menu.style.display==='flex') ? 'none' : 'flex'; });
+      document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !ham.contains(e.target)){ menu.style.display='none'; } });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.style.display='none'; }));
+    })();
+  </script>
+</body>
+</html>
